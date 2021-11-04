@@ -1,0 +1,85 @@
+<form
+    #myForm="ngForm"
+    (ngSubmit)="onSubmit(myForm)"
+>
+    <label for="name">Name</label>
+    <input
+        type="text"
+        name="name"
+        id="formText"
+        autocomplete="off"
+        [(ngModel)]="item.name"
+    >
+    <label for="price">Price</label>
+    <input
+        type="number"
+        name="price"
+        id="formText"
+        min="1"
+        value="1"
+        autocomplete="off"
+        [(ngModel)]="item.price"
+    >
+    <!-- item description -->
+    <label for="description">Description</label>
+    <textarea
+        name="description"
+        id="formTextarea"
+        cols="30"
+        rows="10"
+        [(ngModel)]="item.description"
+    ></textarea>
+
+    <!-- category drop-down menu -->
+    <label for="category">Category</label>
+    <select
+        id="formSelect"
+        #select
+        (change)="onChange(select.value)"
+    >
+    <!-- default value -->
+        <option
+            [value]="null"
+            disabled
+            selected
+        >
+            Select Category
+        </option>
+        <option
+            [(ngModel)]="item.category"
+            name="category"
+            [value]="list"
+            *ngFor="let list of categorySelect"
+        >
+            {{list}}
+        </option>
+    </select>
+
+    <!-- listed and happyhour checkbox -->
+    <label for="listed">Listed</label>
+    <input
+        type="checkbox"
+        name="listed"
+        value="false"
+        [(ngModel)]="item.listed"
+    >
+    <label for="happyHour">Happy Hour</label>
+    <input
+        type="checkbox"
+        name="happyHour"
+        value="false"
+        [(ngModel)]="item.happyHour"
+    >
+
+    <!-- submit and reset button -->
+    <input
+        class=""
+        type="reset"
+        value="Reset"
+    >
+    <input
+        class=""
+        type="submit"
+        value="Submit"
+    >
+</form>
