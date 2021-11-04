@@ -1,0 +1,1 @@
+export type Category = null | 'appetizer' | 'entree' | 'cocktail' | 'beverage' | 'dessert' | 'side';
