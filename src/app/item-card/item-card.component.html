@@ -1,0 +1,22 @@
+<div class="menuCard">
+    <h3>{{item.name}}</h3>
+    <p>{{item.price | currency}}</p>
+    <p>{{item.description}}</p>
+    <p>category: {{item.category}}</p>
+
+    <label for="listed">Listed</label>
+    <input
+        type="checkbox"
+        name="listed"
+        [checked]="item.listed"
+    >
+    <label for="happyHour">Happy Hour</label>
+    <input
+        type="checkbox"
+        name="happyHour"
+        [checked]="item.happyHour"
+    >
+    <button (click)="onDelete(item.id)">delete</button>
+    <!-- add logic to edit item -->
+    <button>edit</button>
+</div>
