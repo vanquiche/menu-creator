@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Item } from '../Item';
 import { CATEGORY_SELECT } from '../CategorySelect';
 
@@ -11,8 +11,12 @@ export class ItemFormComponent {
   // TODOS
   // create form validation
   // require fields
-  // 'price' must be number
-
+  //  - 'price' must be number
+  //  -  no empty fields
+  //  -  must select category
+  
+  @ViewChild('numberField', { static: true }) input!: ElementRef;
+  @ViewChild('optionDefault', { static: true }) option!: ElementRef;
   @Output() sendItem = new EventEmitter<Item>();
 
   // Properties
@@ -38,10 +42,13 @@ export class ItemFormComponent {
   }
 
   onSubmit(data: any) {
-    // send form data to parent
+    // assign id to object
     data.form.value.id = new Date().toISOString();
-    console.log(data.form.value)
+    // send form data to parent
     this.sendItem.emit(data.form.value);
-    data.reset();
+    // reset form back to default
+    data.resetForm();
+    this.input.nativeElement.value = 1;
+    this.option.nativeElement.selected = true;
   }
 }
