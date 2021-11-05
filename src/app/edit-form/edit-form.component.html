@@ -1,6 +1,9 @@
 <h3>Edit {{editItem.name}}</h3>
 
-<form #editForm="ngForm" (ngSubmit)="onSubmit()">
+<form
+    #editForm="ngForm"
+    (ngSubmit)="onSubmit()"
+>
     <label for="name">Name</label>
     <input
         type="text"
@@ -30,10 +33,7 @@
 
     <!-- category drop-down menu -->
     <label for="category">Category</label>
-    <select
-        id="formSelect"
-        #select
-    >
+    <select id="formSelect">
         <!-- default value -->
         <option
             [value]="null"
@@ -45,6 +45,7 @@
             name="category"
             [value]="list"
             *ngFor="let list of categorySelect"
+            [selected]="editItem.category === list"
         >
             {{list}}
         </option>
