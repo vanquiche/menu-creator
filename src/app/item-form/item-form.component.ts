@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Item } from '../Item';
+import { CATEGORY_SELECT } from '../CategorySelect';
 
 @Component({
   selector: 'item-form',
@@ -16,14 +17,7 @@ export class ItemFormComponent {
 
   // Properties
   // loop over for select drop-down menu
-  categorySelect = [
-    'appetizer',
-    'entree',
-    'cocktail',
-    'beverage',
-    'dessert',
-    'side',
-  ];
+  categorySelect = CATEGORY_SELECT;
   item: Item;
 
   constructor() {
