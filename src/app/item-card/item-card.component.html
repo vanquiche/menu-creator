@@ -9,14 +9,16 @@
         type="checkbox"
         name="listed"
         [checked]="item.listed"
+        (change)="handleCheck(item.id, 'listed', item.listed)"
     >
     <label for="happyHour">Happy Hour</label>
     <input
         type="checkbox"
         name="happyHour"
         [checked]="item.happyHour"
+        (change)="handleCheck(item.id, 'happyHour', item.happyHour)"
     >
     <button (click)="onDelete(item.id)">delete</button>
     <!-- add logic to edit item -->
-    <button>edit</button>
+    <button (click)="onEdit(item)">edit</button>
 </div>
