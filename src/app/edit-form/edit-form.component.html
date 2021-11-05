@@ -1,0 +1,78 @@
+<h3>Edit {{editItem.name}}</h3>
+
+<form #editForm="ngForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name</label>
+    <input
+        type="text"
+        name="name"
+        id="formText"
+        autocomplete="off"
+        [value]="editItem.name"
+    >
+    <label for="price">Price</label>
+    <input
+        type="number"
+        name="price"
+        id="formText"
+        min="1"
+        [value]="editItem.price"
+        autocomplete="off"
+    >
+    <!-- item description -->
+    <label for="description">Description</label>
+    <textarea
+        name="description"
+        id="formTextarea"
+        cols="30"
+        rows="10"
+        [value]="editItem.description"
+    ></textarea>
+
+    <!-- category drop-down menu -->
+    <label for="category">Category</label>
+    <select
+        id="formSelect"
+        #select
+    >
+        <!-- default value -->
+        <option
+            [value]="null"
+            disabled
+        >
+            Select Category
+        </option>
+        <option
+            name="category"
+            [value]="list"
+            *ngFor="let list of categorySelect"
+        >
+            {{list}}
+        </option>
+    </select>
+
+    <!-- listed and happyhour checkbox -->
+    <label for="listed">Listed</label>
+    <input
+        type="checkbox"
+        name="listed"
+    >
+    <label for="happyHour">Happy Hour</label>
+    <input
+        type="checkbox"
+        name="happyHour"
+        [value]="editItem.happyHour"
+    >
+
+    <!-- submit and reset button -->
+    <input
+        class
+        type="submit"
+        value="Submit"
+    >
+    <input
+        type="button"
+        value="Cancel"
+        (click)="onCancel()"
+    >
+
+</form>
