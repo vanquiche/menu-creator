@@ -1,10 +1,32 @@
 <h1>Menu Creator</h1>
 
-<item-form (sendItem)="pushToMenu($event)"></item-form>
+<!-- button toggles visibility of form -->
+<button
+    class="toggleFormBtn"
+    (click)="toggleForm()"
+>
+    {{openForm === false ? 'Add New' : 'Close'}}
+</button>
 
+<!-- template form for adding new items -->
+<item-form
+    *ngIf="openForm"
+    (sendItem)="addToMenu($event)"
+></item-form>
+
+<!-- edit form visible upon 'edit' click on card component -->
+<edit-form
+    *ngIf="editForm"
+    [editItem]="selectedEditItem"
+    (cancelEdit)="closeEditForm()"
+></edit-form>
+
+<!-- displays menu -->
 <div *ngFor="let item of menu">
     <item-card
         [item]="item"
         (deleteItem)="deleteFromMenu($event)"
+        (editItem)="editMenuItem($event)"
+        (updateItem)="updateMenu($event)"
     ></item-card>
 </div>
