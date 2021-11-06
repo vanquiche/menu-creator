@@ -19,6 +19,7 @@
     *ngIf="editForm"
     [editItem]="selectedEditItem"
     (cancelEdit)="closeEditForm()"
+    (submitEdit)="submitEditMenu($event)"
 ></edit-form>
 
 <!-- displays menu -->
@@ -26,7 +27,7 @@
     <item-card
         [item]="item"
         (deleteItem)="deleteFromMenu($event)"
-        (editItem)="editMenuItem($event)"
-        (updateItem)="updateMenu($event)"
+        (editItem)="openEditForm($event)"
+        (updateItem)="updateBoolean($event)"
     ></item-card>
 </div>

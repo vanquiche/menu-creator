@@ -30,6 +30,17 @@ export class AppComponent {
     },
   ];
 
+  // METHODS
+  findIndex(refId: string): number {
+    let index!: number;
+    for (const item of this.menu) {
+      if (item.id === refId) {
+        index = this.menu.indexOf(item);
+      }
+    }
+    return index;
+  }
+
   toggleForm() {
     this.openForm = !this.openForm;
   }
@@ -37,16 +48,11 @@ export class AppComponent {
   addToMenu(item: Item) {
     // receive form-data from child
     this.menu.push(item);
+    this.openForm = false;
   }
 
   deleteFromMenu(id: string) {
-    let index!: number;
-    for (const item of this.menu) {
-      if (item.id === id) {
-        index = this.menu.indexOf(item);
-        break;
-      }
-    }
+    let index: number = this.findIndex(id);
     if (index > -1) {
       this.menu.splice(index, 1);
     } else throw new Error('could not find Item to delete');
@@ -55,32 +61,25 @@ export class AppComponent {
   closeEditForm() {
     this.editForm = false;
   }
-
-  editMenuItem(item: Item) {
-    let index!: number;
-    for (const ref of this.menu) {
-      if (ref.id === item.id) {
-        index = this.menu.indexOf(ref);
-        break;
-      }
-    }
-    console.log(this.menu[index]);
+  // opens edit form and populates fields
+  // with data from selected Item
+  openEditForm(item: Item) {
     this.selectedEditItem = item;
     this.editForm = true;
   }
 
+  submitEditMenu(item: any) {
+    let index: number = this.findIndex(item.id);
+    this.menu[index] = item;
+    this.editForm = false;
+  }
+
   // updates boolean value of 'listed'/'happyHour'
-  updateMenu(request: Update) {
+  updateBoolean(request: Update) {
     // request structure:
     // ex. {id: '001', selection: 'listed', value: true}
 
-    let index!: number;
-    for (const item of this.menu) {
-      if (item.id === request.id) {
-        index = this.menu.indexOf(item);
-        break;
-      }
-    }
+    let index: number = this.findIndex(request.id);
     switch (request.selection) {
       case 'listed':
         this.menu[index].listed = !request.value;
