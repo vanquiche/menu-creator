@@ -2,7 +2,7 @@
 
 <form
     #editForm="ngForm"
-    (ngSubmit)="onSubmit()"
+    (ngSubmit)="onSubmit(editForm)"
 >
     <label for="name">Name</label>
     <input
@@ -10,7 +10,7 @@
         name="name"
         id="formText"
         autocomplete="off"
-        [value]="editItem.name"
+        [ngModel]="editItem.name"
     >
     <label for="price">Price</label>
     <input
@@ -18,8 +18,8 @@
         name="price"
         id="formText"
         min="1"
-        [value]="editItem.price"
         autocomplete="off"
+        [ngModel]="editItem.price"
     >
     <!-- item description -->
     <label for="description">Description</label>
@@ -28,12 +28,16 @@
         id="formTextarea"
         cols="30"
         rows="10"
-        [value]="editItem.description"
+        [ngModel]="editItem.description"
     ></textarea>
 
     <!-- category drop-down menu -->
     <label for="category">Category</label>
-    <select id="formSelect">
+    <select
+        id="formSelect"
+        #select
+        (change)="onChange(select.value)"
+    >
         <!-- default value -->
         <option
             [value]="null"
@@ -43,6 +47,7 @@
         </option>
         <option
             name="category"
+            
             [value]="list"
             *ngFor="let list of categorySelect"
             [selected]="editItem.category === list"
@@ -56,12 +61,13 @@
     <input
         type="checkbox"
         name="listed"
+        [ngModel]="editItem.listed"
     >
     <label for="happyHour">Happy Hour</label>
     <input
         type="checkbox"
         name="happyHour"
-        [value]="editItem.happyHour"
+        [ngModel]="editItem.happyHour"
     >
 
     <!-- submit and reset button -->
