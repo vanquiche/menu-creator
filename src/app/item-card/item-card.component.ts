@@ -7,11 +7,6 @@ import { Item } from '../Item';
   styleUrls: ['./item-card.component.css'],
 })
 export class ItemCardComponent {
-  // TODOS
-  // check box sets to true/false depending on item value -- done
-  // update value of checkboxes upon toggle -- done
-  // add delete logic -- done
-  // add edit logic
 
   @Input() item!: Item;
   @Output() deleteItem = new EventEmitter<string>();
