@@ -1,6 +1,4 @@
-<div
-    class="overlay"
->
+<div class="overlay">
 
     <form
         class="editForm"
@@ -14,17 +12,36 @@
             name="name"
             id="formText"
             autocomplete="off"
+            required
+            minlength="4"
             [ngModel]="editItem.name"
+            #name="ngModel"
         >
+        <!-- validation for name -->
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <p *ngIf="name.errors?.['required']">name is required</p>
+            <p *ngIf="name.errors?.['minlength']">
+                name must be at least {{name.errors?.minlength.requiredLength}} characters
+            </p>
+        </div>
+
         <label for="price">Price</label>
         <input
             type="number"
             name="price"
             id="formText"
             min="1"
+            required
             autocomplete="off"
             [ngModel]="editItem.price"
+            #price="ngModel"
         >
+
+        <!-- validation for price -->
+        <div *ngIf="price.invalid && (price.dirty || price.touched)">
+            <p *ngIf="price.errors?.['required']">price is required</p>
+        </div>
+
         <!-- item description -->
         <label for="description">Description</label>
         <textarea
@@ -32,14 +49,28 @@
             id="formTextarea"
             cols="30"
             rows="10"
+            minlength="10"
+            maxlength="250"
+            required
             [ngModel]="editItem.description"
+            #description="ngModel"
         ></textarea>
+
+        <!-- description validation -->
+        <div *ngIf="description.invalid && (description.dirty || description.touched)">
+            <p *ngIf="description.errors?.['required']">description is required</p>
+            <p *ngIf="description.errors?.['minlength']">
+                description must be at least {{description.errors?.minlength.requiredLength}}  characters
+            </p>
+        </div>
 
         <!-- category drop-down menu -->
         <label for="category">Category</label>
         <select
             id="formSelect"
             #select
+            name="category"
+            required
             (change)="onChange(select.value)"
         >
             <!-- default value -->
@@ -51,8 +82,8 @@
             </option>
             <option
                 name="category"
-                [value]="list"
                 *ngFor="let list of categorySelect"
+                [value]="list"
                 [selected]="editItem.category === list"
             >
                 {{list}}
@@ -75,14 +106,15 @@
 
         <!-- submit and reset button -->
         <input
-            class
-            type="submit"
-            value="Submit"
-        >
-        <input
             type="button"
             value="Cancel"
             (click)="onCancel()"
+        >
+        <input
+            class
+            type="submit"
+            value="Submit"
+            [disabled]="!editForm.form.valid"
         >
         <input
             class="closeBtn"

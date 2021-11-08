@@ -18,7 +18,6 @@
         [checked]="item.happyHour"
         (change)="handleCheck(item.id, 'happyHour', item.happyHour)"
     >
-    <button (click)="onDelete(item.id)">delete</button>
-    <!-- add logic to edit item -->
     <button (click)="onEdit(item)">edit</button>
+    <button (click)="onDelete(item.id)">delete</button>
 </div>

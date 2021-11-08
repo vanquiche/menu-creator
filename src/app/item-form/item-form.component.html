@@ -1,6 +1,4 @@
-<div
-    class="overlay"
->
+<div class="overlay">
     <form
         class="mainForm"
         #addForm="ngForm"
@@ -12,8 +10,18 @@
             name="name"
             id="formText"
             autocomplete="off"
+            minlength="4"
+            maxlength="20"
+            required
             [(ngModel)]="item.name"
+            #name="ngModel"
         >
+        <!-- validation for name -->
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <p *ngIf="name.errors?.['required']">name is required</p>
+            <p *ngIf="name.errors?.['minlength']">name must be at least {{name.errors?.minlength.requiredLength}} characters</p>
+        </div>
+
         <label for="price">Price</label>
         <input
             #numberField
@@ -23,8 +31,15 @@
             min="1"
             value="1"
             autocomplete="off"
+            required
             [(ngModel)]="item.price"
+            #price="ngModel"
         >
+        <!-- validation for price -->
+        <div *ngIf="price.invalid && (price.dirty || price.touched)">
+            <p *ngIf="price.errors?.['required']">price is required</p>
+        </div>
+
         <!-- item description -->
         <label for="description">Description</label>
         <textarea
@@ -32,19 +47,31 @@
             id="formTextarea"
             cols="30"
             rows="10"
+            minlength="10"
+            maxlength="250"
+            required
             [(ngModel)]="item.description"
+            #description="ngModel"
         ></textarea>
+
+        <!-- description validation -->
+        <div *ngIf="description.invalid && (description.dirty || description.touched)">
+            <p *ngIf="description.errors?.['required']">description is required</p>
+            <p *ngIf="description.errors?.['minlength']">description must be at least {{description.errors?.minlength.requiredLength}}  characters</p>
+        </div>
 
         <!-- category drop-down menu -->
         <label for="category">Category</label>
         <select
             id="formSelect"
-            #select
+            #select="ngModel"
+            ngModel
+            name="category"
+            required
             (change)="onChange(select.value)"
         >
             <!-- default value -->
             <option
-                #optionDefault
                 [value]="null"
                 disabled
                 selected
@@ -60,6 +87,12 @@
                 {{list}}
             </option>
         </select>
+
+        <!-- validation for category drop-down selection -->
+        <div *ngIf="select.invalid && (select.dirty || select.touched)">
+            <p *ngIf="select.errors?.['required']">category is required</p>
+        </div>
+
 
         <!-- listed and happyhour checkbox -->
         <label for="listed">Listed</label>
@@ -79,14 +112,14 @@
 
         <!-- submit and reset button -->
         <input
-            class
-            type="submit"
-            value="Submit"
-        >
-        <input
             type="button"
             value="Cancel"
             (click)="onClickClose()"
+        >
+        <input
+            type="submit"
+            value="Submit"
+            [disabled]="!addForm.form.valid"
         >
         <input
             class="closeBtn"
