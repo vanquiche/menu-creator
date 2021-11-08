@@ -14,10 +14,11 @@ export class ItemFormComponent {
   //  - 'price' must be number
   //  -  no empty fields
   //  -  must select category
-  
+
   @ViewChild('numberField', { static: true }) input!: ElementRef;
   @ViewChild('optionDefault', { static: true }) option!: ElementRef;
   @Output() sendItem = new EventEmitter<Item>();
+  @Output() emitCloseForm = new EventEmitter();
 
   // Properties
   // loop over for select drop-down menu
@@ -39,6 +40,10 @@ export class ItemFormComponent {
   // updates category upon change
   onChange(value: any) {
     this.item.category = value;
+  }
+
+  onClickClose() {
+    this.emitCloseForm.emit();
   }
 
   onSubmit(data: any) {

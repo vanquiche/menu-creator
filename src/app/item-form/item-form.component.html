@@ -1,82 +1,99 @@
-<form
-    #myForm="ngForm"
-    (ngSubmit)="onSubmit(myForm)"
+<div
+    class="overlay"
 >
-    <label for="name">Name</label>
-    <input
-        type="text"
-        name="name"
-        id="formText"
-        autocomplete="off"
-        [(ngModel)]="item.name"
+    <form
+        class="mainForm"
+        #addForm="ngForm"
+        (ngSubmit)="onSubmit(addForm)"
     >
-    <label for="price">Price</label>
-    <input
-        #numberField
-        type="number"
-        name="price"
-        id="formText"
-        min="1"
-        value="1"
-        autocomplete="off"
-        [(ngModel)]="item.price"
-    >
-    <!-- item description -->
-    <label for="description">Description</label>
-    <textarea
-        name="description"
-        id="formTextarea"
-        cols="30"
-        rows="10"
-        [(ngModel)]="item.description"
-    ></textarea>
-
-    <!-- category drop-down menu -->
-    <label for="category">Category</label>
-    <select
-        id="formSelect"
-        #select
-        (change)="onChange(select.value)"
-    >
-    <!-- default value -->
-        <option
-            #optionDefault
-            [value]="null"
-            disabled
-            selected
+        <label for="name">Name</label>
+        <input
+            type="text"
+            name="name"
+            id="formText"
+            autocomplete="off"
+            [(ngModel)]="item.name"
         >
-            Select Category
-        </option>
-        <option
-            [(ngModel)]="item.category"
-            name="category"
-            [value]="list"
-            *ngFor="let list of categorySelect"
+        <label for="price">Price</label>
+        <input
+            #numberField
+            type="number"
+            name="price"
+            id="formText"
+            min="1"
+            value="1"
+            autocomplete="off"
+            [(ngModel)]="item.price"
         >
-            {{list}}
-        </option>
-    </select>
+        <!-- item description -->
+        <label for="description">Description</label>
+        <textarea
+            name="description"
+            id="formTextarea"
+            cols="30"
+            rows="10"
+            [(ngModel)]="item.description"
+        ></textarea>
 
-    <!-- listed and happyhour checkbox -->
-    <label for="listed">Listed</label>
-    <input
-        type="checkbox"
-        name="listed"
-        value="false"
-        [(ngModel)]="item.listed"
-    >
-    <label for="happyHour">Happy Hour</label>
-    <input
-        type="checkbox"
-        name="happyHour"
-        value="false"
-        [(ngModel)]="item.happyHour"
-    >
+        <!-- category drop-down menu -->
+        <label for="category">Category</label>
+        <select
+            id="formSelect"
+            #select
+            (change)="onChange(select.value)"
+        >
+            <!-- default value -->
+            <option
+                #optionDefault
+                [value]="null"
+                disabled
+                selected
+            >
+                Select Category
+            </option>
+            <option
+                [(ngModel)]="item.category"
+                name="category"
+                [value]="list"
+                *ngFor="let list of categorySelect"
+            >
+                {{list}}
+            </option>
+        </select>
 
-    <!-- submit and reset button -->
-    <input
-        class=""
-        type="submit"
-        value="Submit"
-    >
-</form>
+        <!-- listed and happyhour checkbox -->
+        <label for="listed">Listed</label>
+        <input
+            type="checkbox"
+            name="listed"
+            value="false"
+            [(ngModel)]="item.listed"
+        >
+        <label for="happyHour">Happy Hour</label>
+        <input
+            type="checkbox"
+            name="happyHour"
+            value="false"
+            [(ngModel)]="item.happyHour"
+        >
+
+        <!-- submit and reset button -->
+        <input
+            class
+            type="submit"
+            value="Submit"
+        >
+        <input
+            type="button"
+            value="Cancel"
+            (click)="onClickClose()"
+        >
+        <input
+            class="closeBtn"
+            type="button"
+            value="X"
+            (click)="onClickClose()"
+        >
+    </form>
+
+</div>
