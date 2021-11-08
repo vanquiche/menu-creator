@@ -1,3 +1,8 @@
 .toggleFormBtn {
   width: 100px;
 }
+
+.blur {
+  filter: blur(4px);
+  transition: 0.1s ease;
+}

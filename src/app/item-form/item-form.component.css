@@ -1,13 +1,21 @@
 .mainForm {
-  background-color: aqua;
+  background-color: white;
   position: relative;
   width: 500px;
   padding: 25px;
   z-index: 2;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12),
+              0 2px 2px rgba(0, 0, 0, 0.12),
+              0 4px 4px rgba(0, 0, 0, 0.12),
+              0 8px 8px rgba(0, 0, 0, 0.12),
+              0 16px 16px rgba(0, 0, 0, 0.12),
+              0 32px 32px rgba(0, 0, 0, 0.12),
+              0 64px 64px rgba(0, 0, 0, 0.12);
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 70%);
+  background-color: rgba(0, 0, 0, 30%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,4 +32,7 @@
   top: 0;
   right: 0;
   margin: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
