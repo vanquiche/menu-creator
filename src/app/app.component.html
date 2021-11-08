@@ -1,7 +1,8 @@
-<h1>Menu Creator</h1>
+<h1 [ngClass]="{'blur': editForm || openForm}">Menu Creator</h1>
 
 <!-- button toggles visibility of form -->
 <button
+    [ngClass]="{'blur': editForm || openForm}"
     class="toggleFormBtn"
     (click)="toggleForm()"
 >
@@ -24,7 +25,10 @@
 ></edit-form>
 
 <!-- displays menu -->
-<div class="menuWrapper">
+<div
+    class="menuWrapper"
+    [ngClass]="{'blur': editForm || openForm}"
+>
     <item-card
         *ngFor="let item of menu"
         [item]="item"
