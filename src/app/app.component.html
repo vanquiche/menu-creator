@@ -5,13 +5,14 @@
     class="toggleFormBtn"
     (click)="toggleForm()"
 >
-    {{openForm === false ? 'Add New' : 'Close'}}
+    Add New
 </button>
 
 <!-- template form for adding new items -->
 <item-form
     *ngIf="openForm"
     (sendItem)="addToMenu($event)"
+    (emitCloseForm)="toggleForm()"
 ></item-form>
 
 <!-- edit form visible upon 'edit' click on card component -->
@@ -23,8 +24,9 @@
 ></edit-form>
 
 <!-- displays menu -->
-<div *ngFor="let item of menu">
+<div class="menuWrapper">
     <item-card
+        *ngFor="let item of menu"
         [item]="item"
         (deleteItem)="deleteFromMenu($event)"
         (editItem)="openEditForm($event)"

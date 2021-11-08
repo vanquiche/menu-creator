@@ -8,6 +8,12 @@ import { Update } from './UpdateReqest';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  // TODOS
+  // - create overlay to block UI upon add/edit item
+  // - preview listed and happy-hour menu
+  // - select different menu views 
+
+
   // PROPERTIES
   title = 'angular-menu';
   // controls visibility of 'item-form'
