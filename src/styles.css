@@ -10,7 +10,17 @@ p {
   padding: 0;
 }
 
-
+textarea {
+  resize: none;
+}
+/* remove bootstrap box-shadow */
+.form-control:focus {
+  box-shadow: none;
+}
+input[type="checkbox"]:focus {
+  box-shadow: none;
+}
+/* removes arrows on input number */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

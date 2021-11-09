@@ -1,13 +1,19 @@
 <div class="overlay">
 
     <form
-        class="editForm"
+        class="editForm form-group"
         #editForm="ngForm"
         (ngSubmit)="onSubmit(editForm)"
     >
         <h3>Edit {{editItem.name}}</h3>
-        <label for="name">Name</label>
+        <label
+            class="mt-2"
+            for="name"
+        >
+            Name
+        </label>
         <input
+            class="form-control"
             type="text"
             name="name"
             id="formText"
@@ -18,15 +24,24 @@
             #name="ngModel"
         >
         <!-- validation for name -->
-        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div
+            class="form-text"
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+        >
             <p *ngIf="name.errors?.['required']">name is required</p>
             <p *ngIf="name.errors?.['minlength']">
                 name must be at least {{name.errors?.minlength.requiredLength}} characters
             </p>
         </div>
 
-        <label for="price">Price</label>
+        <label
+            class="mt-2"
+            for="price"
+        >
+            Price
+        </label>
         <input
+            class="form-control"
             type="number"
             name="price"
             id="formText"
@@ -38,13 +53,17 @@
         >
 
         <!-- validation for price -->
-        <div *ngIf="price.invalid && (price.dirty || price.touched)">
+        <div
+            class="form-text"
+            *ngIf="price.invalid && (price.dirty || price.touched)"
+        >
             <p *ngIf="price.errors?.['required']">price is required</p>
         </div>
 
         <!-- item description -->
         <label for="description">Description</label>
         <textarea
+            class="form-control"
             name="description"
             id="formTextarea"
             cols="30"
@@ -57,7 +76,10 @@
         ></textarea>
 
         <!-- description validation -->
-        <div *ngIf="description.invalid && (description.dirty || description.touched)">
+        <div
+            class="form-text"
+            *ngIf="description.invalid && (description.dirty || description.touched)"
+        >
             <p *ngIf="description.errors?.['required']">description is required</p>
             <p *ngIf="description.errors?.['minlength']">
                 description must be at least {{description.errors?.minlength.requiredLength}}  characters
@@ -65,8 +87,14 @@
         </div>
 
         <!-- category drop-down menu -->
-        <label for="category">Category</label>
+        <label
+            class="mt-2"
+            for="category"
+        >
+            Category
+        </label>
         <select
+            class="form-control"
             id="formSelect"
             #select
             name="category"
@@ -91,27 +119,32 @@
         </select>
 
         <!-- listed and happyhour checkbox -->
-        <label for="listed">Listed</label>
-        <input
-            type="checkbox"
-            name="listed"
-            [ngModel]="editItem.listed"
-        >
-        <label for="happyHour">Happy Hour</label>
-        <input
-            type="checkbox"
-            name="happyHour"
-            [ngModel]="editItem.happyHour"
-        >
+        <div class="form-switch ps-0 mt-2 mb-3">
+            <label for="listed">Listed</label>
+            <input
+                class="form-check-input ms-1 me-1 mt-1"
+                type="checkbox"
+                name="listed"
+                [ngModel]="editItem.listed"
+            >
+            <label for="happyHour">Happy Hour</label>
+            <input
+                class="form-check-input ms-1 me-1 mt-1"
+                type="checkbox"
+                name="happyHour"
+                [ngModel]="editItem.happyHour"
+            >
+        </div>
 
         <!-- submit and reset button -->
         <input
+            class="btn btn-secondary me-3"
             type="button"
             value="Cancel"
             (click)="onCancel()"
         >
         <input
-            class
+            class="btn btn-primary"
             type="submit"
             value="Submit"
             [disabled]="!editForm.form.valid"
@@ -119,7 +152,7 @@
         <input
             class="closeBtn"
             type="button"
-            value="X"
+            value="&#10005;"
             (click)="onCancel()"
         >
 

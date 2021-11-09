@@ -1,0 +1,6 @@
+.unlist {
+  border-left: 10px solid rgba(0, 0, 0, 0.125);
+}
+.list {
+  border-left: 10px solid lightseagreen;
+}

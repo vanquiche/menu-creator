@@ -1,23 +1,39 @@
-<div class="menuCard">
-    <h3>{{item.name}}</h3>
-    <p>{{item.price | currency}}</p>
-    <p>{{item.description}}</p>
-    <p>category: {{item.category}}</p>
+<div class="menuCard card mt-2 unlist" [ngClass]="item.listed ? 'list' : ''">
+    <div class="card-body">
+        <p class="text-muted">{{item.category}}</p>
+        <h4 class="card-title mb-0">{{item.name}}</h4>
+        <p>{{item.price | currency}}</p>
+        <p class="card-text">{{item.description}}</p>
 
-    <label for="listed">Listed</label>
-    <input
+        <input
+        class="form-check-input mb-1 mt-1 me-1"
         type="checkbox"
         name="listed"
         [checked]="item.listed"
         (change)="handleCheck(item.id, 'listed', item.listed)"
-    >
-    <label for="happyHour">Happy Hour</label>
-    <input
+        >
+        <label class="me-4" for="listed">Listed</label>
+        <input
+        class="form-check-input mb-1 mt-1 me-1"
         type="checkbox"
         name="happyHour"
         [checked]="item.happyHour"
         (change)="handleCheck(item.id, 'happyHour', item.happyHour)"
-    >
-    <button class="btn btn-warning me-3" (click)="onEdit(item)">edit</button>
-    <button type="button" class="btn btn-danger"(click)="onDelete(item.id)">delete</button>
+        >
+        <label class="me-2" for="happyHour">Happy Hour</label>
+        <br />
+        <button
+            class="btn btn-secondary btn-sm me-3 mt-2"
+            (click)="onEdit(item)"
+        >
+            edit
+        </button>
+        <button
+            type="button"
+            class="btn btn-danger btn-sm mt-2"
+            (click)="onDelete(item.id)"
+        >
+            delete
+        </button>
+    </div>
 </div>
