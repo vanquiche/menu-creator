@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Item } from './Item';
 import { Update } from './UpdateReqest';
+import { Router } from '@angular/router';
+import { MENU } from './MenuDB';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +13,8 @@ export class AppComponent {
   // TODOS
   // - create overlay to block UI upon add/edit item
   // - preview listed and happy-hour menu
-  // - select different menu views 
-
+  // - select different menu views
+  constructor(public router: Router) {}
 
   // PROPERTIES
   title = 'angular-menu';
@@ -23,18 +25,7 @@ export class AppComponent {
   // container to store the item user intends to edit
   selectedEditItem!: Item;
 
-  menu: Item[] = [
-    {
-      id: '001',
-      name: 'Chicken Teriyaki',
-      price: 12.79,
-      description:
-        'Marinated with a sweet glaze, grilled to perfection, served with side salad.',
-      category: 'entree',
-      listed: false,
-      happyHour: true,
-    },
-  ];
+  menu = MENU;
 
   // METHODS
   findIndex(refId: string): number {

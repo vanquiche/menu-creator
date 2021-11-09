@@ -1,39 +1,54 @@
-<h1 [ngClass]="{'blur': editForm || openForm}">Menu Creator</h1>
+<router-outlet [ngClass]="{'blur': editForm || openForm}">
+    <nav class="navbar navbar-expand-sm bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/">home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/views">views</a>
+            </li>
+        </ul>
+    </nav>
+</router-outlet>
 
-<!-- button toggles visibility of form -->
-<button
-    [ngClass]="{'blur': editForm || openForm}"
-    class="btn btn-primary"
-    (click)="toggleForm()"
->
-    Add New
-</button>
+<div [hidden]="router.url !== '/'">
+    <h1 [ngClass]="{'blur': editForm || openForm}">Menu Creator</h1>
 
-<!-- template form for adding new items -->
-<item-form
-    *ngIf="openForm"
-    (sendItem)="addToMenu($event)"
-    (emitCloseForm)="toggleForm()"
-></item-form>
+    <!-- button toggles visibility of form -->
+    <button
+        [ngClass]="{'blur': editForm || openForm}"
+        class="btn btn-primary"
+        (click)="toggleForm()"
+    >
+        Add New
+    </button>
 
-<!-- edit form visible upon 'edit' click on card component -->
-<edit-form
-    *ngIf="editForm"
-    [editItem]="selectedEditItem"
-    (cancelEdit)="closeEditForm()"
-    (submitEdit)="submitEditMenu($event)"
-></edit-form>
+    <!-- template form for adding new items -->
+    <item-form
+        *ngIf="openForm"
+        (sendItem)="addToMenu($event)"
+        (emitCloseForm)="toggleForm()"
+    ></item-form>
 
-<!-- displays menu -->
-<div
-    class="menuWrapper"
-    [ngClass]="{'blur': editForm || openForm}"
->
-    <item-card
-        *ngFor="let item of menu"
-        [item]="item"
-        (deleteItem)="deleteFromMenu($event)"
-        (editItem)="openEditForm($event)"
-        (updateItem)="updateBoolean($event)"
-    ></item-card>
+    <!-- edit form visible upon 'edit' click on card component -->
+    <edit-form
+        *ngIf="editForm"
+        [editItem]="selectedEditItem"
+        (cancelEdit)="closeEditForm()"
+        (submitEdit)="submitEditMenu($event)"
+    ></edit-form>
+
+    <!-- displays menu -->
+    <div
+        class="menuWrapper"
+        [ngClass]="{'blur': editForm || openForm}"
+    >
+        <item-card
+            *ngFor="let item of menu"
+            [item]="item"
+            (deleteItem)="deleteFromMenu($event)"
+            (editItem)="openEditForm($event)"
+            (updateItem)="updateBoolean($event)"
+        ></item-card>
+    </div>
 </div>
