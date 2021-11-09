@@ -10,9 +10,6 @@ p {
   padding: 0;
 }
 
-label {
-  display: block;
-}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

@@ -18,6 +18,6 @@
         [checked]="item.happyHour"
         (change)="handleCheck(item.id, 'happyHour', item.happyHour)"
     >
-    <button (click)="onEdit(item)">edit</button>
-    <button (click)="onDelete(item.id)">delete</button>
+    <button class="btn btn-warning me-3" (click)="onEdit(item)">edit</button>
+    <button type="button" class="btn btn-danger"(click)="onDelete(item.id)">delete</button>
 </div>
