@@ -24,11 +24,13 @@ export class EditFormComponent {
   constructor() {}
 
   onSubmit(data: any) {
-    // console.log(data.form.value);
     this.submitEdit.emit({
       id: this.editItem.id,
-      category: this.currentCategorySelection,
-      ...data.form.value
+      category:
+        this.currentCategorySelection === undefined
+          ? this.editItem.category
+          : this.currentCategorySelection,
+      ...data.form.value,
     });
   }
 
