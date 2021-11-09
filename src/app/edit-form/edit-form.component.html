@@ -18,6 +18,7 @@
             name="name"
             id="formText"
             autocomplete="off"
+            placeholder="Beef Wellington, Cheesecake, Martini, etc..."
             required
             minlength="4"
             [ngModel]="editItem.name"
@@ -70,6 +71,7 @@
             rows="10"
             minlength="10"
             maxlength="250"
+            placeholder="A scrumptious description of the dish or drink..."
             required
             [ngModel]="editItem.description"
             #description="ngModel"

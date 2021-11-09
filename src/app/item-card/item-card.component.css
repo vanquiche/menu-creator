@@ -1,6 +1,8 @@
 .unlist {
   border-left: 10px solid rgba(0, 0, 0, 0.125);
+  transition: 0.5s ease;
 }
 .list {
   border-left: 10px solid lightseagreen;
+  transition: 0.5s ease;
 }
