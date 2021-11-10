@@ -15,7 +15,7 @@ import { MenuViewComponent } from './menu-view/menu-view.component';
     ItemFormComponent,
     ItemCardComponent,
     EditFormComponent,
-    MenuViewComponent
+    MenuViewComponent,
   ],
   imports: [
     BrowserModule,

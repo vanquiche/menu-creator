@@ -1,15 +1,17 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, Input} from '@angular/core';
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'app-menu-view',
   templateUrl: './menu-view.component.html',
   styleUrls: ['./menu-view.component.css']
 })
-export class MenuViewComponent implements OnInit {
-  @Input() display: any;
-  constructor() { }
+export class MenuViewComponent {
+
+  menu = this.menuService.getMenu();
   
-  ngOnInit(): void {
-  }
+  constructor(private menuService: MenuService) { }
+
+
 
 }

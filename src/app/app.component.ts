@@ -3,6 +3,7 @@ import { Item } from './Item';
 import { Update } from './UpdateReqest';
 import { Router } from '@angular/router';
 import { MENU } from './MenuDB';
+import { MenuService } from './menu.service';
 
 @Component({
   selector: 'app-root',
@@ -14,47 +15,23 @@ export class AppComponent {
   // - create overlay to block UI upon add/edit item
   // - preview listed and happy-hour menu
   // - select different menu views
-  constructor(public router: Router) {}
+  constructor(public router: Router, private menuService: MenuService) {}
 
   // PROPERTIES
   title = 'angular-menu';
-  // controls visibility of 'item-form'
   openForm = false;
-  // controls visibility of 'edit-form'
   editForm = false;
+
   // container to store the item user intends to edit
   selectedEditItem!: Item;
-
-  menu = MENU;
+  menu = this.menuService.getMenu();
 
   // METHODS
-  findIndex(refId: string): number {
-    let index!: number;
-    for (const item of this.menu) {
-      if (item.id === refId) {
-        index = this.menu.indexOf(item);
-      }
-    }
-    return index;
-  }
 
+  // toggle visibility of forms
   toggleForm() {
     this.openForm = !this.openForm;
   }
-
-  addToMenu(item: Item) {
-    // receive form-data from child
-    this.menu.push(item);
-    this.openForm = false;
-  }
-
-  deleteFromMenu(id: string) {
-    let index: number = this.findIndex(id);
-    if (index > -1) {
-      this.menu.splice(index, 1);
-    } else throw new Error('could not find Item to delete');
-  }
-
   closeEditForm() {
     this.editForm = false;
   }
@@ -65,27 +42,22 @@ export class AppComponent {
     this.editForm = true;
   }
 
-  submitEditMenu(item: any) {
-    let index: number = this.findIndex(item.id);
-    this.menu[index] = item;
+  addToMenu(item: Item) {
+    this.menuService.addItem(item);
+    this.openForm = false;
+  }
+
+  deleteFromMenu(id: string) {
+    this.menuService.deleteItem(id);
+  }
+
+  submitEdit(item: any) {
+    this.menuService.editItem(item, item.id);
     this.editForm = false;
   }
 
   // updates boolean value of 'listed'/'happyHour'
   updateBoolean(request: Update) {
-    // request structure:
-    // ex. {id: '001', selection: 'listed', value: true}
-
-    let index: number = this.findIndex(request.id);
-    switch (request.selection) {
-      case 'listed':
-        this.menu[index].listed = !request.value;
-        break;
-      case 'happyHour':
-        this.menu[index].happyHour = !request.value;
-        break;
-    }
+    this.menuService.updateStatus(request);
   }
-
-  // end
 }
