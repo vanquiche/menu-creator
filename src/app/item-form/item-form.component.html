@@ -1,10 +1,24 @@
-<div class="overlay">
+<button
+    class="btn btn-primary btn-sm"
+    (click)="openForm()"
+>
+    Add New
+</button>
+<div
+    *ngIf="formActive"
+    class="overlay"
+>
     <form
         class="mainForm form-group"
         #addForm="ngForm"
         (ngSubmit)="onSubmit(addForm)"
     >
-        <label class="mt-2" for="name">Name</label>
+        <label
+            class="mt-2"
+            for="name"
+        >
+            Name
+        </label>
         <input
             class="form-control"
             type="text"
@@ -15,38 +29,52 @@
             autocomplete="off"
             placeholder="Beef Wellington, Cheesecake, Martini, etc..."
             required
-            [(ngModel)]="item.name"
+            (ngModel)="name"
             #name="ngModel"
         >
         <!-- validation for name -->
-        <div class="form-text" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div
+            class="form-text"
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+        >
             <p *ngIf="name.errors?.['required']">name is required</p>
             <p *ngIf="name.errors?.['minlength']">
                 name must be at least {{name.errors?.minlength.requiredLength}} characters
             </p>
         </div>
 
-        <label class="mt-2" for="price">Price</label>
+        <label
+            class="mt-2"
+            for="price"
+        >
+            Price
+        </label>
         <input
             class="form-control"
             type="number"
             name="price"
             id="formText"
-            min="1"
-            value="1"
             placeholder="10.99"
             autocomplete="off"
             required
-            [(ngModel)]="item.price"
+            (ngModel)="price"
             #price="ngModel"
         >
         <!-- validation for price -->
-        <div class="form-text" *ngIf="price.invalid && (price.dirty || price.touched)">
+        <div
+            class="form-text"
+            *ngIf="price.invalid && (price.dirty || price.touched)"
+        >
             <p *ngIf="price.errors?.['required']">price is required</p>
         </div>
 
         <!-- item description -->
-        <label class="mt-2" for="description">Description</label>
+        <label
+            class="mt-2"
+            for="description"
+        >
+            Description
+        </label>
         <textarea
             class="form-control"
             name="description"
@@ -57,12 +85,15 @@
             maxlength="250"
             placeholder="A scrumptious description of the dish or drink..."
             required
-            [(ngModel)]="item.description"
+            (ngModel)="description"
             #description="ngModel"
         ></textarea>
 
         <!-- description validation -->
-        <div class="form-text" *ngIf="description.invalid && (description.dirty || description.touched)">
+        <div
+            class="form-text"
+            *ngIf="description.invalid && (description.dirty || description.touched)"
+        >
             <p *ngIf="description.errors?.['required']">description is required</p>
             <p *ngIf="description.errors?.['minlength']">
                 description must be at least {{description.errors?.minlength.requiredLength}}  characters
@@ -70,26 +101,31 @@
         </div>
 
         <!-- category drop-down menu -->
-        <label class="mt-2" for="category">Category</label>
+        <label
+            class="mt-2"
+            for="category"
+        >
+            Category
+        </label>
         <select
             class="form-control"
             id="formSelect"
-            #select="ngModel"
-            ngModel
             name="category"
             required
-            (change)="onChange(select.value)"
+            ngModel
+            #select="ngModel"
         >
             <!-- default value -->
             <option
-                [value]="null"
+                value=""
                 disabled
                 selected
             >
                 Select Category
             </option>
+            <!-- iterate over category list -->
             <option
-                [(ngModel)]="item.category"
+                ngModel
                 name="category"
                 [value]="list"
                 *ngFor="let list of categorySelect"
@@ -99,7 +135,10 @@
         </select>
 
         <!-- validation for category drop-down selection -->
-        <div class="form-text" *ngIf="select.invalid && (select.dirty || select.touched)">
+        <div
+            class="form-text"
+            *ngIf="select.invalid && (select.dirty || select.touched)"
+        >
             <p *ngIf="select.errors?.['required']">category is required</p>
         </div>
 
@@ -115,8 +154,7 @@
                 class="form-check-input ms-1 me-1 mt-1"
                 type="checkbox"
                 name="listed"
-                value="false"
-                [(ngModel)]="item.listed"
+                [ngModel]="false"
             >
             <label
                 class="form-check-label"
@@ -128,8 +166,7 @@
                 class="form-check-input ms-1 me-1 mt-1"
                 type="checkbox"
                 name="happyHour"
-                value="false"
-                [(ngModel)]="item.happyHour"
+                [ngModel]="false"
             >
         </div>
 
@@ -138,7 +175,7 @@
             class="btn btn-secondary me-3"
             type="button"
             value="Cancel"
-            (click)="onClickClose()"
+            (click)="closeForm()"
         >
         <input
             class="btn btn-primary"
@@ -150,7 +187,7 @@
             class="closeBtn"
             type="button"
             value="&#10005;"
-            (click)="onClickClose()"
+            (click)="closeForm()"
         >
     </form>
 

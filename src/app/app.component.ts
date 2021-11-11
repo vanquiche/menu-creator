@@ -18,7 +18,6 @@ export class AppComponent {
 
   // PROPERTIES
   title = 'angular-menu';
-  openForm = false;
   editForm = false;
 
   // container to store the item user intends to edit
@@ -28,9 +27,7 @@ export class AppComponent {
   // METHODS
 
   // toggle visibility of forms
-  toggleForm() {
-    this.openForm = !this.openForm;
-  }
+  
   closeEditForm() {
     this.editForm = false;
   }
@@ -41,10 +38,6 @@ export class AppComponent {
     this.editForm = true;
   }
 
-  addToMenu(item: Item) {
-    this.menuService.addItem(item);
-    this.openForm = false;
-  }
 
   deleteFromMenu(id: string) {
     this.menuService.deleteItem(id);

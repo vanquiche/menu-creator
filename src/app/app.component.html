@@ -1,4 +1,4 @@
-<router-outlet [ngClass]="{'blur': editForm || openForm}">
+<router-outlet >
     <nav class="navbar navbar-expand-sm bg-light">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -12,23 +12,13 @@
 </router-outlet>
 
 <div [hidden]="router.url !== '/'">
-    <h1 [ngClass]="{'blur': editForm || openForm}">Menu Creator</h1>
+    <h1 >Menu Creator</h1>
 
     <!-- button toggles visibility of form -->
-    <button
-        [ngClass]="{'blur': editForm || openForm}"
-        class="btn btn-primary"
-        (click)="toggleForm()"
-    >
-        Add New
-    </button>
+
 
     <!-- template form for adding new items -->
-    <item-form
-        *ngIf="openForm"
-        (sendItem)="addToMenu($event)"
-        (emitCloseForm)="toggleForm()"
-    ></item-form>
+    <item-form></item-form>
 
     <!-- edit form visible upon 'edit' click on card component -->
     <edit-form
@@ -41,7 +31,6 @@
     <!-- displays menu -->
     <div
         class="menuWrapper"
-        [ngClass]="{'blur': editForm || openForm}"
     >
         <item-card
             *ngFor="let item of menu"
