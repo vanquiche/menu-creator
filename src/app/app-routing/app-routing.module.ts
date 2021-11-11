@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuViewComponent } from '../menu-view/menu-view.component';
 
 const routes: Routes = [
-  {path: 'views', component: MenuViewComponent}
+  {path: 'preview', component: MenuViewComponent}
 ]
 @NgModule({
   declarations: [],

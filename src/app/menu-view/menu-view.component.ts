@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component} from '@angular/core';
 import { MenuService } from '../menu.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { MenuService } from '../menu.service';
 })
 export class MenuViewComponent {
 
-  menu = this.menuService.getMenu();
-  
+  menu = this.menuService.getListedMenu();
+
   constructor(private menuService: MenuService) { }
 
 

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Item } from './Item';
 import { Update } from './UpdateReqest';
 import { Router } from '@angular/router';
-import { MENU } from './MenuDB';
 import { MenuService } from './menu.service';
 
 @Component({

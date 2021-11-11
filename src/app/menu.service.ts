@@ -21,12 +21,20 @@ export class MenuService {
     return index;
   }
 
-  addItem(item: Item) {
-    this.menu.push(item);
+  getListedMenu() {
+    return this.menu.filter((item) => item.listed === true);
   }
-
+  getHappyHourMenu() {
+    return this.menu.filter(
+      (item) => item.happyHour === true && item.listed === true
+    );
+  }
   getMenu() {
     return this.menu;
+  }
+
+  addItem(item: Item) {
+    this.menu.push(item);
   }
 
   editItem(item: Item, id: string) {
