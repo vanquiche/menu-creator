@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CATEGORY_SELECT } from '../CategorySelect';
 import { MenuService } from '../menu.service';
+import { BlurViewService } from '../blur-view.service';
 
 @Component({
   selector: 'item-form',
@@ -15,14 +16,16 @@ export class ItemFormComponent {
 
   formActive: boolean = false;
 
-  constructor(private menuService: MenuService) { }
+  constructor(private menuService: MenuService, private blurUI: BlurViewService) { }
   // Methods
   openForm() {
     this.formActive = true;
+    this.blurUI.setState('addform');
   }
 
   closeForm() {
     this.formActive = false;
+    this.blurUI.setState(null);
   }
 
   onSubmit(data: any) {

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Item } from './Item';
-import { Update } from './UpdateReqest';
 import { Router } from '@angular/router';
-import { MenuService } from './menu.service';
+import { BlurViewService } from './blur-view.service';
+import { Subscription } from 'rxjs';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,42 +14,29 @@ export class AppComponent {
   // - create overlay to block UI upon add/edit item
   // - preview listed and happy-hour menu
   // - select different menu views
-  constructor(public router: Router, private menuService: MenuService) {}
-
   // PROPERTIES
+  @ViewChild('nav', { static: true }) navbar!: ElementRef;
+
   title = 'angular-menu';
-  editForm = false;
+  subscription!: Subscription;
+  blurBG!: any;
+  addFormActive!: any;
+  editFormActive!: any;
 
-  // container to store the item user intends to edit
-  selectedEditItem!: Item;
-  menu = this.menuService.getMenu();
-
-  // METHODS
-
-  // toggle visibility of forms
-  
-  closeEditForm() {
-    this.editForm = false;
-  }
-  // opens edit form and populates fields
-  // with data from selected Item
-  openEditForm(item: Item) {
-    this.selectedEditItem = item;
-    this.editForm = true;
-  }
-
-
-  deleteFromMenu(id: string) {
-    this.menuService.deleteItem(id);
-  }
-
-  submitEdit(item: any) {
-    this.menuService.editItem(item, item.id);
-    this.editForm = false;
-  }
-
-  // updates boolean value of 'listed'/'happyHour'
-  updateBoolean(request: Update) {
-    this.menuService.updateStatus(request);
+  constructor(public router: Router, private blurUIservice: BlurViewService) {
+    this.subscription = this.blurUIservice.getState().subscribe((val) => {
+      switch (val) {
+        case 'addform':
+          this.addFormActive = true;
+          break;
+        case 'editform':
+          this.editFormActive = true;
+          break;
+        case null:
+          this.addFormActive = false;
+          this.editFormActive = false;
+          break;
+      }
+    });
   }
 }

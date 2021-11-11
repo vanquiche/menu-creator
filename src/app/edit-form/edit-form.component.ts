@@ -4,6 +4,7 @@ import { CATEGORY_SELECT } from '../CategorySelect';
 import { Category } from '../Category';
 import { MenuService } from '../menu.service';
 import { Update } from '../UpdateReqest';
+import { BlurViewService } from '../blur-view.service';
 
 @Component({
   selector: 'edit-form',
@@ -22,36 +23,41 @@ export class EditFormComponent {
 
   categorySelect = CATEGORY_SELECT;
   currentCategorySelection!: Category;
-  activeForm: boolean = false;
+  formActive: boolean = false;
   menu = this.menuService.getMenu();
 
-  constructor(private menuService: MenuService) {}
+  constructor(
+    private menuService: MenuService,
+    private blurUIservice: BlurViewService
+  ) {}
 
   onSubmit(data: any) {
-    this.menuService.editItem({
-      id: this.editItem.id,
-      category:
-        this.currentCategorySelection === undefined
-          ? this.editItem.category
-          : this.currentCategorySelection,
-      ...data.form.value,
-    }, this.editItem.id);
-    this.activeForm = false;
+    this.menuService.editItem(
+      {
+        id: this.editItem.id,
+        category:
+          this.currentCategorySelection === undefined
+            ? this.editItem.category
+            : this.currentCategorySelection,
+        ...data.form.value,
+      },
+      this.editItem.id
+    );
+    this.formActive = false;
   }
 
   onCancel() {
-    this.activeForm = false;
+    this.formActive = false;
+    this.blurUIservice.setState(null)
   }
   openEditForm(item: Item) {
-    this.activeForm = true;
+    this.formActive = true;
+    this.blurUIservice.setState('editform')
     this.editItem = item;
   }
 
   onChange(selection: any) {
     this.currentCategorySelection = selection;
   }
-
-
-
 }
 

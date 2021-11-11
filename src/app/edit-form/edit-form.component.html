@@ -1,5 +1,5 @@
 <div
-    *ngIf="activeForm"
+    *ngIf="formActive"
     class="overlay"
 >
     <form
@@ -163,7 +163,7 @@
     </form>
 </div>
 
-<div class="menuWrapper" [ngClass]="{'blur': activeForm}">
+<div class="menuWrapper" [ngClass]="{'blur': formActive}">
     <item-card
         *ngFor="let item of menu"
         [item]="item"
