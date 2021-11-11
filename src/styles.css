@@ -32,3 +32,8 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.blur {
+  filter: blur(4px);
+  transition: 0.1s ease;
+}

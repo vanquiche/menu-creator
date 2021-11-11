@@ -1,5 +1,7 @@
-<div class="overlay">
-
+<div
+    *ngIf="activeForm"
+    class="overlay"
+>
     <form
         class="editForm form-group"
         #editForm="ngForm"
@@ -105,7 +107,7 @@
         >
             <!-- default value -->
             <option
-                [value]="null"
+                value=""
                 disabled
             >
                 Select Category
@@ -159,4 +161,12 @@
         >
 
     </form>
+</div>
+
+<div class="menuWrapper" [ngClass]="{'blur': activeForm}">
+    <item-card
+        *ngFor="let item of menu"
+        [item]="item"
+        (openForm)="openEditForm($event)"
+    ></item-card>
 </div>

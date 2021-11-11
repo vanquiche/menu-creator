@@ -37,7 +37,7 @@ export class MenuService {
     this.menu.push(item);
   }
 
-  editItem(item: Item, id: string) {
+  editItem(item: Item, id: any) {
     // todo
     let index = this.findIndex(id);
     this.menu[index] = item;
@@ -51,7 +51,7 @@ export class MenuService {
     } else throw new Error('could not find Item to delete');
   }
 
-  updateStatus(request: Update) {
+  updateStatus(request: any) {
     // request structure:
     // {id: '001', selection: 'listed', value: true}
     let index: number = this.findIndex(request.id);

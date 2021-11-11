@@ -1,5 +1,5 @@
 export type Update = {
-  id: string,
-  selection: string,
-  value: boolean
+  id?: string,
+  selection?: string,
+  value?: boolean
 }

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../Item';
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'item-card',
@@ -9,22 +10,20 @@ import { Item } from '../Item';
 export class ItemCardComponent {
 
   @Input() item!: Item;
-  @Output() deleteItem = new EventEmitter<string>();
-  @Output() editItem = new EventEmitter<Item>();
-  @Output() updateItem = new EventEmitter();
+  @Output() openForm = new EventEmitter<Item>();
 
-  constructor() {}
+  constructor(private menuService: MenuService) {}
 
   onDelete(id: any) {
-    this.deleteItem.emit(id);
+    this.menuService.deleteItem(id);
   }
 
   onEdit(item: Item) {
-    this.editItem.emit(item);
+    this.openForm.emit(item);
   }
 
   handleCheck(id?: string, selection?: string, value?: boolean) {
-    this.updateItem.emit({
+    this.menuService.updateStatus({
       id,
       selection,
       value

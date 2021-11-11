@@ -2,6 +2,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../Item';
 import { CATEGORY_SELECT } from '../CategorySelect';
 import { Category } from '../Category';
+import { MenuService } from '../menu.service';
+import { Update } from '../UpdateReqest';
 
 @Component({
   selector: 'edit-form',
@@ -20,25 +22,36 @@ export class EditFormComponent {
 
   categorySelect = CATEGORY_SELECT;
   currentCategorySelection!: Category;
+  activeForm: boolean = false;
+  menu = this.menuService.getMenu();
 
-  constructor() {}
+  constructor(private menuService: MenuService) {}
 
   onSubmit(data: any) {
-    this.submitEdit.emit({
+    this.menuService.editItem({
       id: this.editItem.id,
       category:
         this.currentCategorySelection === undefined
           ? this.editItem.category
           : this.currentCategorySelection,
       ...data.form.value,
-    });
+    }, this.editItem.id);
+    this.activeForm = false;
   }
 
   onCancel() {
-    this.cancelEdit.emit();
+    this.activeForm = false;
+  }
+  openEditForm(item: Item) {
+    this.activeForm = true;
+    this.editItem = item;
   }
 
   onChange(selection: any) {
     this.currentCategorySelection = selection;
   }
+
+
+
 }
+
