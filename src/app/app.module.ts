@@ -8,6 +8,7 @@ import { ItemFormComponent } from './item-form/item-form.component';
 import { ItemCardComponent } from './item-card/item-card.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { MenuViewComponent } from './menu-view/menu-view.component';
+import { FilterMenuPipe } from './filter-menu.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MenuViewComponent } from './menu-view/menu-view.component';
     ItemCardComponent,
     EditFormComponent,
     MenuViewComponent,
+    FilterMenuPipe,
   ],
   imports: [
     BrowserModule,

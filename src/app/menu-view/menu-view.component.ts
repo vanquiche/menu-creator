@@ -1,14 +1,15 @@
 import { Component, Renderer2} from '@angular/core';
 import { MenuService } from '../menu.service';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-menu-view',
+  selector: 'menu-view',
   templateUrl: './menu-view.component.html',
   styleUrls: ['./menu-view.component.css']
 })
 export class MenuViewComponent {
 
-  menu = this.menuService.getListedMenu();
+  menu = this.menuService.getMenu();
 
   styles!: {
     format?: string ,

@@ -14,6 +14,9 @@ export class AppComponent {
   addFormActive!: boolean;
   editFormActive!: boolean;
 
+  viewMenu: boolean = false;
+  viewCreate: boolean = true;
+
   constructor(public router: Router, private blurUIservice: BlurViewService) {
     this.subscription = this.blurUIservice.getState().subscribe((val) => {
       switch (val) {
@@ -29,5 +32,15 @@ export class AppComponent {
           break;
       }
     });
+  }
+
+  showMenu() {
+    this.viewMenu = true;
+    this.viewCreate = false;
+  }
+
+  showCreate() {
+    this.viewCreate = true;
+    this.viewMenu = false;
   }
 }

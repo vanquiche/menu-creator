@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from './Item';
 import { MENU } from './MenuDB';
-import { Update } from './UpdateReqest';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,15 +20,7 @@ export class MenuService {
     }
     return index;
   }
-
-  getListedMenu() {
-    return this.menu.filter((item) => item.listed === true);
-  }
-  getHappyHourMenu() {
-    return this.menu.filter(
-      (item) => item.happyHour === true && item.listed === true
-    );
-  }
+  
   getMenu() {
     return this.menu;
   }

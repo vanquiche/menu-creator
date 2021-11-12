@@ -1,34 +1,37 @@
-<router-outlet>
-    <nav
-        class="navbar navbar-expand-sm bg-light"
-        [ngClass]="{'blur': editFormActive || addFormActive}"
-    >
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    routerLink="/"
-                >
-                    create
-                </a>
-            </li>
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    routerLink="/preview"
-                >
-                    preview
-                </a>
-            </li>
-        </ul>
-    </nav>
-</router-outlet>
+<nav
+    class="navbar navbar-expand-sm bg-light"
+    [ngClass]="{'blur': editFormActive || addFormActive}"
+>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a
+                class="nav-link pointer"
+                (click)="showCreate()"
+            >
+                create
+            </a>
+        </li>
+        <li class="nav-item">
+            <a
+                class="nav-link pointer"
+                (click)="showMenu()"
+            >
+                preview
+            </a>
+        </li>
+    </ul>
+</nav>
 
-<div [hidden]="router.url !== '/'">
+<div [hidden]="viewMenu">
     <h1 [ngClass]="{'blur': editFormActive || addFormActive}">Menu Creator</h1>
 
     <item-form [ngClass]="{'blur': editFormActive}"></item-form>
 
     <edit-form [ngClass]="{'blur': addFormActive}"></edit-form>
 
+</div>
+
+<div [hidden]="viewCreate">
+    <h1>Preview Menu</h1>
+    <menu-view></menu-view>
 </div>

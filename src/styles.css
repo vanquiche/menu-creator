@@ -40,3 +40,7 @@ input[type=number] {
   filter: blur(6px);
   transition: 0.1s ease;
 }
+
+.pointer {
+  cursor: pointer;
+}
