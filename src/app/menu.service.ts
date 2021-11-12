@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Item } from './Item';
 import { MENU } from './MenuDB';
-import { Subject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuService {
-  menu: Item[] = [...MENU];
+  private menu: Item[] = [...MENU];
+  private _menu = new BehaviorSubject<Item[]>(this.menu);
+  readonly menu$ = this._menu.asObservable();
+
 
   constructor() {}
 
@@ -20,19 +24,17 @@ export class MenuService {
     }
     return index;
   }
-  
-  getMenu() {
-    return this.menu;
-  }
 
   addItem(item: Item) {
     this.menu.push(item);
+    this._menu.next(Object.assign([], this.menu));
   }
 
   editItem(item: Item, id: any) {
     // todo
     let index = this.findIndex(id);
     this.menu[index] = item;
+    this._menu.next(Object.assign([], this.menu))
   }
 
   deleteItem(id: string) {
@@ -40,7 +42,8 @@ export class MenuService {
     let index: number = this.findIndex(id);
     if (index > -1) {
       this.menu.splice(index, 1);
-    } else throw new Error('could not find Item to delete');
+    }
+    this._menu.next(Object.assign([], this.menu));
   }
 
   updateStatus(request: any) {
@@ -55,5 +58,6 @@ export class MenuService {
         this.menu[index].happyHour = !request.value;
         break;
     }
+    this._menu.next(Object.assign([], this.menu));
   }
 }

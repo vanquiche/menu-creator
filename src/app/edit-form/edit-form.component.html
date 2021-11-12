@@ -165,7 +165,7 @@
 
 <div class="menuWrapper" [ngClass]="{'blur': formActive}">
     <item-card
-        *ngFor="let item of menu"
+        *ngFor="let item of (menu | async)"
         [item]="item"
         (openForm)="openEditForm($event)"
     ></item-card>

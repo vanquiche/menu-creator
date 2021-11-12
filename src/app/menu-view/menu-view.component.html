@@ -200,7 +200,7 @@
     >
 </form>
 <div class="menu-container">
-    <div *ngFor="let item of menu">
+    <div *ngFor="let item of (menu | async)">
         <p>{{item.name}}</p>
         <p>{{item.price | currency}}</p>
         <p>{{item.description}}</p>

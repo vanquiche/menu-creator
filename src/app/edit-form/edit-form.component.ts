@@ -1,17 +1,17 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Item } from '../Item';
 import { CATEGORY_SELECT } from '../CategorySelect';
 import { Category } from '../Category';
 import { MenuService } from '../menu.service';
-import { Update } from '../UpdateReqest';
 import { BlurViewService } from '../blur-view.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'edit-form',
   templateUrl: './edit-form.component.html',
   styleUrls: ['./edit-form.component.css'],
 })
-export class EditFormComponent {
+export class EditFormComponent implements OnInit{
   // TODOS
   // drop-down menu is selected by existing value -- DONE
   // add ngModel to each input in form -- DONE
@@ -24,12 +24,16 @@ export class EditFormComponent {
   categorySelect = CATEGORY_SELECT;
   currentCategorySelection!: Category;
   formActive: boolean = false;
-  menu = this.menuService.getMenu();
+  menu!: Observable<Item[]>;
 
   constructor(
     private menuService: MenuService,
     private blurUIservice: BlurViewService
   ) {}
+
+  ngOnInit() {
+    this.menu = this.menuService.menu$;
+  }
 
   onSubmit(data: any) {
     this.menuService.editItem(
