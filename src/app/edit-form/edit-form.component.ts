@@ -44,6 +44,7 @@ export class EditFormComponent {
       this.editItem.id
     );
     this.formActive = false;
+    this.blurUIservice.setState(null);
   }
 
   onCancel() {

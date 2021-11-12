@@ -9,7 +9,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-
   title = 'angular-menu';
   subscription!: Subscription;
   addFormActive!: boolean;

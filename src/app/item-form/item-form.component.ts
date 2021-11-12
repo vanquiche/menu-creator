@@ -36,6 +36,7 @@ export class ItemFormComponent {
     // reset form back to default
     data.reset();
     this.formActive = false;
+    this.blurUI.setState(null);
   }
 
 

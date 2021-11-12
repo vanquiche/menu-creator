@@ -20,6 +20,7 @@ textarea {
 input[type="checkbox"]:focus {
   box-shadow: none;
 }
+
 /* removes arrows on input number */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -34,6 +35,6 @@ input[type=number] {
 }
 
 .blur {
-  filter: blur(4px);
+  filter: blur(6px);
   transition: 0.1s ease;
 }
