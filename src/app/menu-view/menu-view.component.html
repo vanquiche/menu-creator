@@ -1,5 +1,208 @@
-<div *ngFor="let item of menu">
-  <p>{{item.name}}</p>
-  <p>{{item.price}}</p>
-  <p>{{item.description}}</p>
+<!-- add user style selection here -->
+
+<form
+    class="form-group"
+    #styleForm="ngForm"
+    (ngSubmit)="checkValue(styleForm.form.value)"
+>
+    <!-- format -->
+    <div
+        class="btn-group btn-group-sm m-1"
+        role="group"
+        aria-label="format selection"
+    >
+
+        <input
+            class="btn-check"
+            type="radio"
+            id="label"
+            name="format"
+            value="LABEL"
+            disabled
+        >
+        <label
+            class="btn btn-outline-primary group-label"
+            for="label"
+        >
+            Format
+        </label>
+        <input
+            class="btn-check"
+            type="radio"
+            id="tall"
+            name="format"
+            value="tall"
+            ngModel
+            #tall
+        >
+        <label
+            class="btn btn-outline-primary group-tab"
+            for="tall"
+        >
+            Tall
+        </label>
+        <input
+            class="btn-check"
+            type="radio"
+            id="wide"
+            name="format"
+            value="wide"
+            checked
+            ngModel
+            #wide
+        >
+        <label
+            class="btn btn-outline-primary group-tab"
+            for="wide"
+        >
+            Wide
+        </label>
+        <input
+            class="btn-check"
+            type="radio"
+            id="list"
+            name="format"
+            value="list"
+            ngModel
+            #list
+        >
+        <label
+            class="btn btn-outline-primary group-tab"
+            for="list"
+        >
+            List
+        </label>
+    </div>
+
+    <!-- font style -->
+    <div
+        class="btn-group btn-group-sm m-1"
+        role="group"
+        aria-label="font selection"
+    >
+        <input
+            class="btn-check"
+            type="radio"
+            id="label"
+            name="font"
+            value="LABEL"
+            disabled
+        >
+        <label
+            class="btn btn-outline-primary group-label"
+            for="label"
+        >
+            Font
+        </label>
+        <input
+            class="btn-check"
+            type="radio"
+            id="modern"
+            name="font"
+            value="modern"
+            ngModel
+            #modern
+        >
+        <label
+            class="btn btn-outline-primary group-tab"
+            for="modern"
+        >
+            Modern
+        </label>
+        <input
+            class="btn-check"
+            type="radio"
+            id="classic"
+            name="font"
+            value="classic"
+            ngModel
+            #classic
+        >
+        <label
+            class="btn btn-outline-primary group-tab"
+            for="classic"
+        >
+            Classic
+        </label>
+        <input
+            class="btn-check"
+            type="radio"
+            id="stylize"
+            name="font"
+            value="stylize"
+            ngModel
+            #stylize
+        >
+        <label
+            class="btn btn-outline-primary group-tab"
+            for="stylize"
+        >
+            Stylize
+        </label>
+    </div>
+
+    <!-- pricing style -->
+    <div
+        class="btn-group btn-group-sm m-1"
+        role="group"
+        aria-label="pricing-style selection"
+    >
+        <input
+            class="btn-check"
+            type="radio"
+            id="label"
+            name="pricing"
+            value="LABEL"
+            disabled
+        >
+        <label
+            class="btn btn-outline-primary group-label"
+            for="label"
+        >
+            Pricing
+        </label>
+        <input
+            class="btn-check"
+            type="radio"
+            id="default"
+            name="pricing"
+            value="default"
+            checked
+            ngModel
+            #default
+        >
+        <label
+            class="btn btn-outline-primary group-tab-wide"
+            for="default"
+        >
+            Default
+        </label>
+        <input
+            class="btn-check"
+            type="radio"
+            id="fixed"
+            name="pricing"
+            value="fixed"
+            ngModel
+            #fixed
+        >
+        <label
+            class="btn btn-outline-primary group-tab-wide"
+            for="fixed"
+        >
+            Fixed
+        </label>
+    </div>
+    <input
+        class="btn btn-primary btn-sm"
+        type="submit"
+        value="preview"
+    >
+</form>
+<div class="menu-container">
+    <div *ngFor="let item of menu">
+        <p ngClass="{{styles.format}}">{{item.name}}</p>
+        <p>{{item.price | currency}}</p>
+        <p>{{item.description}}</p>
+    </div>
 </div>

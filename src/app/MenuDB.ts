@@ -8,7 +8,7 @@ export const MENU: Item[] = [
     description:
       'Marinated with a sweet glaze, grilled to perfection, served with side salad.',
     category: 'entree',
-    listed: false,
+    listed: true,
     happyHour: true,
   },
 ];

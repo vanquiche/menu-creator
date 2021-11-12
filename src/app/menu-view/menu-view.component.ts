@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Renderer2} from '@angular/core';
 import { MenuService } from '../menu.service';
 
 @Component({
@@ -10,8 +10,17 @@ export class MenuViewComponent {
 
   menu = this.menuService.getListedMenu();
 
+  styles!: {
+    format?: string ,
+    font?: string,
+    pricing?: string
+  }
+
   constructor(private menuService: MenuService) { }
 
-
+  checkValue(val: any) {
+    this.styles = {...val}
+    console.log(this.styles)
+  }
 
 }

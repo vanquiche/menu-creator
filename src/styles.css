@@ -17,8 +17,10 @@ textarea {
 .form-control:focus {
   box-shadow: none;
 }
+
 input[type="checkbox"]:focus {
   box-shadow: none;
+  outline: none;
 }
 
 /* removes arrows on input number */
