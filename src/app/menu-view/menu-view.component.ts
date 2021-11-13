@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../menu.service';
-import { Observable, from } from 'rxjs';
-import { Item } from '../Item';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Item } from '../Item';
 
 @Component({
   selector: 'menu-view',
@@ -22,7 +23,7 @@ export class MenuViewComponent implements OnInit {
   ngOnInit() {
     // returns only items that are listed
     this.menu = this.menuService.menu$.pipe(
-      map((data) => data.filter((item) => item.listed === true))
+      map((menu) => menu.filter((item) => item.listed === true))
     );
   }
 
