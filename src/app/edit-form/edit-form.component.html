@@ -115,10 +115,10 @@
             <option
                 name="category"
                 *ngFor="let list of categorySelect"
-                [value]="list"
-                [selected]="editItem.category === list"
+                [ngValue]="list"
+                [selected]="editItem.category.name === list.name"
             >
-                {{list}}
+                {{list.name}}
             </option>
         </select>
 

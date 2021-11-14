@@ -13,7 +13,6 @@ import { CATEGORY_SELECT } from '../CategorySelect';
 })
 export class MenuViewComponent implements OnInit {
   menu!: Observable<Item[]>;
-  categorized!: Observable<Item[]>;
   category = CATEGORY_SELECT;
 
   styles!: {
@@ -26,15 +25,7 @@ export class MenuViewComponent implements OnInit {
 
   ngOnInit() {
     // returns only items that are listed
-    this.menu = this.menuService.menu$.pipe(
-      map((menu) => menu.filter((item) => item.listed === true))
-    );
-
-    this.categorized = this.menuService.menu$.pipe(tap(result => {
-      result.sort((a, b): any => {
-        return a.price < b.price ? -1 : 1
-      })
-    }))
+    this.menu = this.menuService.menu$
 
   }
 

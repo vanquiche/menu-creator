@@ -1,6 +1,7 @@
 <div class="menuCard card mt-2 unlist" [ngClass]="item.listed ? 'list' : ''">
     <div class="card-body">
-        <p class="text-muted">{{item.category}}</p>
+        {{item.id}}
+        <p class="text-muted">{{item.category.name}}</p>
         <h4 class="card-title mb-0">{{item.name}}</h4>
         <p>{{item.price | currency}}</p>
         <p class="card-text">{{item.description}}</p>
@@ -10,7 +11,7 @@
         type="checkbox"
         name="listed"
         [checked]="item.listed"
-        (change)="handleCheck(item.id, 'listed', item.listed)"
+        (change)="handleCheck(item, 'listed')"
         >
         <label class="me-4" for="listed">listed</label>
         <input
@@ -18,7 +19,7 @@
         type="checkbox"
         name="happyHour"
         [checked]="item.happyHour"
-        (change)="handleCheck(item.id, 'happyHour', item.happyHour)"
+        (change)="handleCheck(item, 'happyHour')"
         >
         <label class="me-2" for="happyHour">happy hour</label>
         <br />

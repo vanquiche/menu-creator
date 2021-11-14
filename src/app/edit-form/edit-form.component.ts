@@ -22,7 +22,7 @@ export class EditFormComponent implements OnInit{
   @Input() editItem!: Item;
 
   categorySelect = CATEGORY_SELECT;
-  currentCategorySelection!: Category;
+  currentCategorySelection!: any;
   formActive: boolean = false;
   menu!: Observable<Item[]>;
 
@@ -47,6 +47,15 @@ export class EditFormComponent implements OnInit{
       },
       this.editItem.id
     );
+    console.log({
+      id: this.editItem.id,
+      category:
+        this.currentCategorySelection === undefined
+          ? this.editItem.category
+          : this.currentCategorySelection,
+      ...data.form.value,
+    });
+
     this.formActive = false;
     this.blurUIservice.setState(null);
   }
@@ -61,8 +70,32 @@ export class EditFormComponent implements OnInit{
     this.editItem = item;
   }
 
-  onChange(selection: any) {
-    this.currentCategorySelection = selection;
+  onChange(selection: string) {
+    let position: number = this.editItem.category.position;
+    switch(selection) {
+      case 'appetizer':
+        position = 0;
+        break;
+      case 'entree':
+        position = 1;
+        break;
+      case 'dessert':
+        position = 2;
+        break;
+      case 'cocktail':
+        position = 3;
+        break;
+      case 'beverage':
+        position = 4;
+        break;
+      case 'side':
+        position = 5;
+        break;
+    }
+    this.currentCategorySelection = {name: selection, position};
+
   }
+
+
 }
 

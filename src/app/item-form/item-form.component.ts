@@ -33,6 +33,7 @@ export class ItemFormComponent {
     data.form.value.id = new Date().toISOString();
     // send form data to parent
     this.menuService.addItem(data.form.value);
+
     // reset form back to default
     data.reset();
     this.formActive = false;

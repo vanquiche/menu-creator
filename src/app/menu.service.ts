@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Item } from './Item';
 import { MENU } from './MenuDB';
-import { BehaviorSubject } from 'rxjs';
-
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +12,10 @@ export class MenuService {
   private _menu = new BehaviorSubject<Item[]>(this.menu);
   readonly menu$ = this._menu.asObservable();
 
+  
+  constructor() {
 
-  constructor() {}
+  }
 
   findIndex(refId: string): number {
     let index!: number;
@@ -27,6 +29,7 @@ export class MenuService {
 
   addItem(item: Item) {
     this.menu.unshift(item);
+
     this._menu.next(Object.assign([], this.menu));
   }
 
@@ -34,7 +37,8 @@ export class MenuService {
     // todo
     let index = this.findIndex(id);
     this.menu[index] = item;
-    this._menu.next(Object.assign([], this.menu))
+
+    this._menu.next(Object.assign([], this.menu));
   }
 
   deleteItem(id: string) {
@@ -46,18 +50,21 @@ export class MenuService {
     this._menu.next(Object.assign([], this.menu));
   }
 
-  updateStatus(request: any) {
-    // request structure:
-    // {id: '001', selection: 'listed', value: true}
-    let index: number = this.findIndex(request.id);
-    switch (request.selection) {
-      case 'listed':
-        this.menu[index].listed = !request.value;
-        break;
-      case 'happyHour':
-        this.menu[index].happyHour = !request.value;
-        break;
-    }
+  updateListStatus(request: any) {
+    this.menu.forEach((item) => {
+      if (item.id === request.id) {
+        item.listed = !item.listed;
+      }
+    });
+    this._menu.next(Object.assign([], this.menu));
+  }
+
+  updateHappyHourStatus(request: any) {
+    this.menu.forEach((item) => {
+      if (item.id === request.id) {
+        item.happyHour = !item.happyHour;
+      }
+    });
     this._menu.next(Object.assign([], this.menu));
   }
 }

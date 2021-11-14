@@ -128,10 +128,10 @@
             <option
                 ngModel
                 name="category"
-                [value]="list"
+                [ngValue]="list"
                 *ngFor="let list of categorySelect"
             >
-                {{list}}
+                {{list.name}}
             </option>
         </select>
 

@@ -22,11 +22,12 @@ export class ItemCardComponent {
     this.openForm.emit(item);
   }
 
-  handleCheck(id?: string, selection?: string, value?: boolean) {
-    this.menuService.updateStatus({
-      id,
-      selection,
-      value
-    });
+  handleCheck(item: any, status: string) {
+    if (status === 'listed') this.menuService.updateListStatus(item);
+    if (status === 'happyHour') this.menuService.updateHappyHourStatus(item);
+
+    console.log(item);
+
+
   }
 }
