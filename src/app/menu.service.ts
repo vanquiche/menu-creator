@@ -26,7 +26,7 @@ export class MenuService {
   }
 
   addItem(item: Item) {
-    this.menu.push(item);
+    this.menu.unshift(item);
     this._menu.next(Object.assign([], this.menu));
   }
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../menu.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { Item } from '../Item';
+import { CATEGORY_SELECT } from '../CategorySelect';
 
 @Component({
   selector: 'menu-view',
@@ -12,6 +13,9 @@ import { Item } from '../Item';
 })
 export class MenuViewComponent implements OnInit {
   menu!: Observable<Item[]>;
+  categorized!: Observable<Item[]>;
+  category = CATEGORY_SELECT;
+
   styles!: {
     format?: string;
     font?: string;
@@ -25,6 +29,13 @@ export class MenuViewComponent implements OnInit {
     this.menu = this.menuService.menu$.pipe(
       map((menu) => menu.filter((item) => item.listed === true))
     );
+
+    this.categorized = this.menuService.menu$.pipe(tap(result => {
+      result.sort((a, b): any => {
+        return a.price < b.price ? -1 : 1
+      })
+    }))
+
   }
 
   checkValue(val: any) {

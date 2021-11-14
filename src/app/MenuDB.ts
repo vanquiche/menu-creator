@@ -2,47 +2,6 @@ import { Item } from './Item';
 
 export const MENU: Item[] = [
   {
-    id: '007',
-    name: 'Mozarella Sticks',
-    price: 11.99,
-    description:
-      "This isn't your frozen mozarella sticks. We went to great lengths to elevate this classic to new heights. Using Mozzarella cheese from Italy, coated in Japanese Panko, and then deep-fried in truffle oil. Served with marinara sauce made from San Marzano tomatoes.",
-    category: 'appetizer',
-    listed: true,
-    happyHour: false,
-  },
-  {
-    id: '008',
-    name: 'Beef-Sliders',
-    price: 12.99,
-    description:
-      'Tiny burgers with big flavors. Kobe beef grilled with minced onions, shredded Tillamook cheese, artisan pickles on a butter-basted Hawaiian roll. Served with a side of aioli sauce made in-house.',
-    category: 'appetizer',
-    listed: true,
-    happyHour: false,
-  },
-  {
-    id: '009',
-    name: 'Chicken Skewers',
-    price: 10.99,
-    description:
-      "Our chicken is intricately sliced and skewered with leeks and gently grilled over Japanese charcoal and basted in a sweet soy glaze as it cooks. A slow and meticulous process but trust us, it's worth the wait.",
-    category: 'appetizer',
-    listed: true,
-    happyHour: false,
-  },
-  {
-    id: '010',
-    name: 'Pot Stickers',
-    price: 8.99,
-    description:
-      'A mix of pork, scallion, and herbs wrapped in a delicate wrapper, grilled on a cast-iron pan until a crust is formed. Crispy outside and tender juicy filling. Served with soy dipping sauce.',
-    category: 'appetizer',
-    listed: true,
-    happyHour: false,
-  },
-
-  {
     id: '001',
     name: 'Chicken Teriyaki',
     price: 14.79,
@@ -189,6 +148,46 @@ export const MENU: Item[] = [
     description:
       'Straight to the point. Either served on the rocks or in a shot.',
     category: 'cocktail',
+    listed: true,
+    happyHour: false,
+  },
+  {
+    id: '007',
+    name: 'Mozarella Sticks',
+    price: 11.99,
+    description:
+      "This isn't your frozen mozarella sticks. We went to great lengths to elevate this classic to new heights. Using Mozzarella cheese from Italy, coated in Japanese Panko, and then deep-fried in truffle oil. Served with marinara sauce made from San Marzano tomatoes.",
+    category: 'appetizer',
+    listed: true,
+    happyHour: false,
+  },
+  {
+    id: '008',
+    name: 'Beef-Sliders',
+    price: 12.99,
+    description:
+      'Tiny burgers with big flavors. Kobe beef grilled with minced onions, shredded Tillamook cheese, artisan pickles on a butter-basted Hawaiian roll. Served with a side of aioli sauce made in-house.',
+    category: 'appetizer',
+    listed: true,
+    happyHour: false,
+  },
+  {
+    id: '009',
+    name: 'Chicken Skewers',
+    price: 10.99,
+    description:
+      "Our chicken is intricately sliced and skewered with leeks and gently grilled over Japanese charcoal and basted in a sweet soy glaze as it cooks. A slow and meticulous process but trust us, it's worth the wait.",
+    category: 'appetizer',
+    listed: true,
+    happyHour: false,
+  },
+  {
+    id: '010',
+    name: 'Pot Stickers',
+    price: 8.99,
+    description:
+      'A mix of pork, scallion, and herbs wrapped in a delicate wrapper, grilled on a cast-iron pan until a crust is formed. Crispy outside and tender juicy filling. Served with soy dipping sauce.',
+    category: 'appetizer',
     listed: true,
     happyHour: false,
   },

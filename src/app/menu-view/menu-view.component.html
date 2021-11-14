@@ -194,15 +194,19 @@
         </label>
     </div>
     <input
-        class="btn btn-primary btn-sm"
+        class="btn btn-primary btn-sm d-block"
         type="submit"
-        value="preview"
+        value="Preview"
     >
 </form>
 <div class="menu-container">
-    <div *ngFor="let item of (menu | async)">
-        <p>{{item.name}}</p>
-        <p>{{item.price | currency}}</p>
-        <p>{{item.description}}</p>
+    <div class="category-container">
+        <div *ngFor="let item of (categorized | async)">
+
+            <h6>{{item.name}}</h6>
+            <p>{{item.price | currency}}</p>
+            <p>{{item.description}}</p>
+        </div>
     </div>
+
 </div>
