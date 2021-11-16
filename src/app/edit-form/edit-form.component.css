@@ -34,3 +34,7 @@
   border: none;
   cursor: pointer;
 }
+
+.menu-wrapper {
+  width: clamp(375px, 100%, 900px)
+}

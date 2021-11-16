@@ -19,6 +19,7 @@
             name="format"
             value="LABEL"
             disabled
+
         >
         <label
             class="btn btn-outline-primary group-label bg-dark text-white border-dark"
@@ -32,8 +33,10 @@
             id="tall"
             name="format"
             value="tall"
-            ngModel
+            [checked]="styles.format === tall.value"
             #tall
+            [ngModel]="styles.format"
+
         >
         <label
             class="btn btn-outline-primary group-tab"
@@ -47,9 +50,9 @@
             id="wide"
             name="format"
             value="wide"
-            checked
-            ngModel
+            [checked]="styles.format === wide.value"
             #wide
+            [ngModel]="styles.format"
         >
         <label
             class="btn btn-outline-primary group-tab "
@@ -63,8 +66,9 @@
             id="list"
             name="format"
             value="list"
-            ngModel
+            [checked]="styles.format === list.value"
             #list
+            [ngModel]="styles.format"
         >
         <label
             class="btn btn-outline-primary group-tab"
@@ -87,6 +91,7 @@
             name="font"
             value="LABEL"
             disabled
+
         >
         <label
             class="btn btn-outline-primary group-label bg-dark text-white border-dark"
@@ -100,8 +105,9 @@
             id="modern"
             name="font"
             value="modern"
-            ngModel
+            [checked]="styles.font === modern.value"
             #modern
+            [ngModel]="styles.font"
         >
         <label
             class="btn btn-outline-primary group-tab"
@@ -115,8 +121,9 @@
             id="classic"
             name="font"
             value="classic"
-            ngModel
+            [checked]="styles.font === classic.value"
             #classic
+            [ngModel]="styles.font"
         >
         <label
             class="btn btn-outline-primary group-tab"
@@ -130,8 +137,9 @@
             id="stylize"
             name="font"
             value="stylize"
-            ngModel
+            [checked]="styles.font === stylize.value"
             #stylize
+            [ngModel]="styles.font"
         >
         <label
             class="btn btn-outline-primary group-tab"
@@ -154,6 +162,7 @@
             name="pricing"
             value="LABEL"
             disabled
+
         >
         <label
             class="btn btn-outline-primary group-label bg-dark text-white border-dark"
@@ -168,8 +177,10 @@
             name="pricing"
             value="default"
             checked
-            ngModel
+            [checked]="styles.pricing === default.value"
             #default
+            [ngModel]="styles.pricing"
+
         >
         <label
             class="btn btn-outline-primary group-tab-wide"
@@ -183,8 +194,9 @@
             id="fixed"
             name="pricing"
             value="fixed"
-            ngModel
+            [checked]="styles.pricing === default.value"
             #fixed
+            [ngModel]="styles.pricing"
         >
         <label
             class="btn btn-outline-primary group-tab-wide"

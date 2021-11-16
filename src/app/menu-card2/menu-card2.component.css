@@ -1,4 +1,12 @@
-
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Lora:regular,500,600,700,italic,500italic,600italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Cabin:regular,500,600,700,italic,500italic,600italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Nova+Round:regular);
+@import url(https://fonts.googleapis.com/css?family=Chango:regular);
+@import url(https://fonts.googleapis.com/css?family=Changa+One:regular,italic);
+@import url(https://fonts.googleapis.com/css?family=Averia+Gruesa+Libre:regular);
+@import url(https://fonts.googleapis.com/css?family=Special+Elite:regular);
 /* standard values */
 .card-wrapper {
   align-self: center;
@@ -67,40 +75,51 @@
 /* controls font */
 /* CLASSIC FONT */
 .classic {
-  font-family: serif;
+  font-family: Playfair Display;
 }
 /* item heading */
 .classic h5 {
-  font-family: serif;
+  font-family: Lora;
+  font-weight: 550;
 }
 /* item description and price */
 .classic p {
-  font-family: serif;
+  font-family: Lora;
+  font-weight: 450;
+}
+.classic .card-price {
+  font-weight: 350;
 }
 
 /* MODERN */
 .modern {
-  font-family: sans-serif;
+  font-family: Cabin;
 }
 /* item heading */
 .modern h5 {
-  font-family: sans-serif;
+  font-family: Montserrat;
+  font-weight: 500;
 }
 /* item description and price */
 .modern p {
-  font-family: sans-serif;
+  font-family: Montserrat;
+  font-weight: 450;
+}
+
+.modern .card-price {
+  font-weight: 400;
 }
 
 /* STYLIZE */
 .stylize {
-  font-family: monospace;
+  font-family: Special Elite;
 }
 /* item heading */
 .stylize h5 {
-  font-family: monospace;
+  font-family: Averia Gruesa Libre;
 }
 /* item description and price */
 .stylize p {
-  font-family: monospace;
+  font-family: Averia Gruesa Libre;
 }
 

@@ -7,7 +7,7 @@ import { Style } from './UserStyle';
 })
 export class StyleService {
   defaultStyle = {
-    format: 'tall',
+    format: 'wide',
     font: 'classic',
     pricing: 'default'
   }
