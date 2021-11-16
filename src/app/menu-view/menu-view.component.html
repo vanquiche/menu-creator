@@ -21,7 +21,7 @@
             disabled
         >
         <label
-            class="btn btn-outline-primary group-label"
+            class="btn btn-outline-primary group-label bg-dark text-white border-dark"
             for="label"
         >
             Format
@@ -52,7 +52,7 @@
             #wide
         >
         <label
-            class="btn btn-outline-primary group-tab"
+            class="btn btn-outline-primary group-tab "
             for="wide"
         >
             Wide
@@ -89,7 +89,7 @@
             disabled
         >
         <label
-            class="btn btn-outline-primary group-label"
+            class="btn btn-outline-primary group-label bg-dark text-white border-dark"
             for="label"
         >
             Font
@@ -156,7 +156,7 @@
             disabled
         >
         <label
-            class="btn btn-outline-primary group-label"
+            class="btn btn-outline-primary group-label bg-dark text-white border-dark"
             for="label"
         >
             Pricing
@@ -194,19 +194,43 @@
         </label>
     </div>
     <input
-        class="btn btn-primary btn-sm d-block"
+        class="btn btn-primary btn-sm d-block ms-1 preview-btn"
         type="submit"
         value="Preview"
+
     >
 </form>
-<div class="menu-container">
-    <div class="category-container">
-        <div *ngFor="let item of (menu | async)">
 
-            <h6>{{item.name}}</h6>
-            <p>{{item.price | currency}}</p>
-            <p>{{item.description}}</p>
-        </div>
-    </div>
+<div class="menu-container">
+
+    <menu-card
+        [styles]="styles"
+        [category]="appetizer"
+        title="Appetizers"
+    ></menu-card>
+
+    <menu-card
+        [styles]="styles"
+        [category]="entree"
+        title="Entrees"
+    ></menu-card>
+
+    <menu-card
+        [styles]="styles"
+        [category]="cocktail"
+        title="Cocktails"
+    ></menu-card>
+
+    <menu-card
+        [styles]="styles"
+        [category]="beverage"
+        title="Beverages"
+    ></menu-card>
+
+    <menu-card
+        [styles]="styles"
+        [category]="side"
+        title="Sides"
+    ></menu-card>
 
 </div>

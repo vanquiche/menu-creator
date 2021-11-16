@@ -1,3 +1,4 @@
+<router-outlet>
 <nav
     class="navbar navbar-expand-sm bg-light"
     [ngClass]="{'blur': editFormActive || addFormActive}"
@@ -6,7 +7,7 @@
         <li class="nav-item">
             <a
                 class="nav-link pointer"
-                (click)="showCreate()"
+                routerLink="/"
             >
                 create
             </a>
@@ -14,15 +15,16 @@
         <li class="nav-item">
             <a
                 class="nav-link pointer"
-                (click)="showMenu()"
+                routerLink="/preview"
             >
                 preview
             </a>
         </li>
     </ul>
 </nav>
+</router-outlet>
 
-<div [hidden]="viewMenu">
+<div [hidden]="router.url !== '/' ">
     <h1 [ngClass]="{'blur': editFormActive || addFormActive}">Menu Creator</h1>
 
     <item-form [ngClass]="{'blur': editFormActive}"></item-form>
@@ -31,7 +33,3 @@
 
 </div>
 
-<div [hidden]="viewCreate">
-    <h1>Preview Menu</h1>
-    <menu-view></menu-view>
-</div>

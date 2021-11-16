@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../menu.service';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Item } from '../Item';
+import { Style } from '../UserStyle';
 import { CATEGORY_SELECT } from '../CategorySelect';
+
+import { StyleService } from '../user-style.service';
 
 @Component({
   selector: 'menu-view',
@@ -12,25 +15,46 @@ import { CATEGORY_SELECT } from '../CategorySelect';
   styleUrls: ['./menu-view.component.css'],
 })
 export class MenuViewComponent implements OnInit {
-  menu!: Observable<Item[]>;
+  appetizer!: Observable<Item[]>;
+  entree!: Observable<Item[]>;
+  dessert!: Observable<Item[]>;
+  cocktail!: Observable<Item[]>;
+  beverage!: Observable<Item[]>;
+  side!: Observable<Item[]>;
+
   category = CATEGORY_SELECT;
 
-  styles!: {
-    format?: string;
-    font?: string;
-    pricing?: string;
-  };
+  styleSubscription!: Subscription;
+  styles!: Style;
 
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService, private styleService: StyleService) {}
 
   ngOnInit() {
     // returns only items that are listed
-    this.menu = this.menuService.menu$
+    // sorted by category
+    this.appetizer = this.menuService.menu$.pipe(map(menu => menu.filter(item => item.listed === true && item.category.name === 'appetizer')))
+    this.entree = this.menuService.menu$.pipe(map(menu => menu.filter(item => item.listed === true && item.category.name === 'entree')))
+    this.dessert = this.menuService.menu$.pipe(map(menu => menu.filter(item => item.listed === true && item.category.name === 'dessert')))
+    this.cocktail = this.menuService.menu$.pipe(map(menu => menu.filter(item => item.listed === true && item.category.name === 'cocktail')))
+    this.beverage = this.menuService.menu$.pipe(map(menu => menu.filter(item => item.listed === true && item.category.name === 'beverage')))
+    this.side = this.menuService.menu$.pipe(map(menu => menu.filter(item => item.listed === true && item.category.name === 'side')))
 
+    // initialize style values
+    this.styleService.getStyle().subscribe((val) => (this.styles = val));
   }
 
   checkValue(val: any) {
-    this.styles = { ...val };
-    console.log(this.styles);
+    // set new values
+    this.styleService.setStyle(val);
+
+    // retrieve new values
+
+    this.styleService.getStyle().subscribe((val) => (this.styles = val));
+
+    console.log(val)
+    console.log(this.styles)
+
   }
+
+
 }

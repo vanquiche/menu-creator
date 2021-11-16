@@ -1,0 +1,34 @@
+<ng-container
+    *ngFor="let item of (category | async); let i = index"
+>
+    <h2
+        class="category-title"
+        [ngClass]="styles.font"
+        *ngIf="i === 0"
+    >
+        {{title}}
+    </h2>
+</ng-container>
+<div
+    class="card-wrapper"
+    [ngClass]="styles.format"
+>
+    <!-- card -->
+    <div
+        class="menu-card"
+        *ngFor="let item of (category | async)"
+    >
+        <div
+            class="card-body"
+            *ngIf="item"
+            [ngClass]="styles.font"
+        >
+            <h5 class="card-name">{{item.name}}</h5>
+            <p class="card-price">{{item.price | currency}}</p>
+            <p *ngIf="styles.format !== 'list'">{{item.description}}</p>
+        </div>
+    </div>
+</div>
+
+<!-- this the pattern to remove decimal -->
+<!-- : 'USD' : 'symbol' : '1.0-0' -->

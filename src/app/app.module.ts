@@ -9,6 +9,7 @@ import { ItemCardComponent } from './item-card/item-card.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { MenuViewComponent } from './menu-view/menu-view.component';
 import { FilterMenuPipe } from './filter-menu.pipe';
+import { MenuCard2Component } from './menu-card2/menu-card2.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FilterMenuPipe } from './filter-menu.pipe';
     EditFormComponent,
     MenuViewComponent,
     FilterMenuPipe,
+    MenuCard2Component,
   ],
   imports: [
     BrowserModule,

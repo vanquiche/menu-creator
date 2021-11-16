@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Item } from './Item';
 import { MENU } from './MenuDB';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ export class MenuService {
   private _menu = new BehaviorSubject<Item[]>(this.menu);
   readonly menu$ = this._menu.asObservable();
 
-  
+
   constructor() {
 
   }

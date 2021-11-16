@@ -1,0 +1,106 @@
+
+/* standard values */
+.card-wrapper {
+  align-self: center;
+  margin: 0 auto;
+  display: grid;
+  width: clamp(375px, 100%, 900px);
+  margin-bottom: 35px;
+}
+
+.category-title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+/* card body */
+.menu-card {
+  /* outline: 1px solid red; */
+}
+.card-body {
+  padding: 10px;
+  margin: 0;
+}
+.card-name {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.card-price {
+
+}
+
+
+/* user selected styles */
+/* format styles */
+.tall {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+/* WIDE CLASS */
+.wide {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  text-align: justify;
+  word-spacing: -3px;
+}
+
+.wide .card-body {
+  padding: 20px;
+}
+
+/* LIST CLASS */
+.list {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+.list .card-body {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  width: clamp(300px, 100%, 700px)
+}
+
+/* controls font */
+/* CLASSIC FONT */
+.classic {
+  font-family: serif;
+}
+/* item heading */
+.classic h5 {
+  font-family: serif;
+}
+/* item description and price */
+.classic p {
+  font-family: serif;
+}
+
+/* MODERN */
+.modern {
+  font-family: sans-serif;
+}
+/* item heading */
+.modern h5 {
+  font-family: sans-serif;
+}
+/* item description and price */
+.modern p {
+  font-family: sans-serif;
+}
+
+/* STYLIZE */
+.stylize {
+  font-family: monospace;
+}
+/* item heading */
+.stylize h5 {
+  font-family: monospace;
+}
+/* item description and price */
+.stylize p {
+  font-family: monospace;
+}
+
