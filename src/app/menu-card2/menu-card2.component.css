@@ -26,6 +26,7 @@
 /* card body */
 .menu-card {
   /* outline: 1px solid red; */
+  font-size: .80rem;
 }
 .card-body {
   padding: 10px;
@@ -52,7 +53,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   text-align: justify;
-  word-spacing: -3px;
+  word-spacing: -2px;
 }
 
 .wide .card-body {
@@ -71,7 +72,10 @@
   justify-content: space-between;
   width: clamp(300px, 100%, 850px)
 }
-
+.list .card-name {
+  font-weight: 500;
+  font-size: 1rem;
+}
 /* controls font */
 /* CLASSIC FONT */
 .classic {

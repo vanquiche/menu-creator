@@ -1,6 +1,6 @@
 <button
     [ngClass]="{'blur': formActive}"
-    class="btn btn-primary btn-sm"
+    class="btn btn-primary btn-sm shadow-none"
     (click)="openForm()"
 >
     Add New
@@ -10,6 +10,7 @@
     class="overlay"
 >
     <form
+        #form
         class="mainForm form-group"
         #addForm="ngForm"
         (ngSubmit)="onSubmit(addForm)"

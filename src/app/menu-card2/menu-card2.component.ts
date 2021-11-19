@@ -13,6 +13,7 @@ export class MenuCard2Component implements OnInit {
   @Input() title!: string;
   @Input() styles!: Style;
 
+
   constructor() {}
 
   ngOnInit(): void {}

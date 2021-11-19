@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, Inject } from '@angular/core';
 import { CATEGORY_SELECT } from '../CategorySelect';
 import { MenuService } from '../menu.service';
 import { BlurViewService } from '../blur-view.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'item-form',
@@ -9,14 +10,18 @@ import { BlurViewService } from '../blur-view.service';
   styleUrls: ['./item-form.component.css'],
 })
 export class ItemFormComponent {
-
+  @ViewChild('form', { static: true }) addForm!: ElementRef;
   // Properties
   // loop over for select drop-down menu
   categorySelect = CATEGORY_SELECT;
 
   formActive: boolean = false;
 
-  constructor(private menuService: MenuService, private blurUI: BlurViewService) { }
+  constructor(
+    private menuService: MenuService,
+    private blurUI: BlurViewService,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
   // Methods
   openForm() {
     this.formActive = true;
@@ -39,6 +44,4 @@ export class ItemFormComponent {
     this.formActive = false;
     this.blurUI.setState(null);
   }
-
-
 }

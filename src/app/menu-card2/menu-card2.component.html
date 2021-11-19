@@ -24,7 +24,7 @@
             [ngClass]="styles.font"
         >
             <h5 class="card-name">{{item.name}}</h5>
-            <p class="card-price">{{item.price | currency}}</p>
+            <p class="card-price">{{item.price | currency: 'USD' : 'symbol': styles.pricing }}</p>
             <p *ngIf="styles.format !== 'list'">{{item.description}}</p>
         </div>
     </div>

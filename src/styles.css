@@ -47,3 +47,6 @@ input[type=number] {
 .pointer {
   cursor: pointer;
 }
+.no-scroll {
+  overflow: hidden;
+}

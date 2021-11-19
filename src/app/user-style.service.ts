@@ -3,17 +3,17 @@ import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { Style } from './UserStyle';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StyleService {
   defaultStyle = {
     format: 'wide',
     font: 'classic',
-    pricing: 'default'
-  }
-  subject = new BehaviorSubject<Style>(this.defaultStyle)
+    pricing: '1.2-2',
+  };
+  subject = new BehaviorSubject<Style>(this.defaultStyle);
 
-  constructor() { }
+  constructor() {}
 
   getStyle(): Observable<Style> {
     return this.subject.asObservable();
