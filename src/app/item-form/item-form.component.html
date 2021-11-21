@@ -1,19 +1,17 @@
 <button
-    [ngClass]="{'blur': formActive}"
     class="btn btn-primary btn-sm shadow-none"
-    (click)="openForm()"
+    (click)="openForm(modal)"
+    [ngClass]="{'blur': formActive}"
 >
     Add New
 </button>
-<div
-    *ngIf="formActive"
-    class="overlay"
->
+<ng-template #modal let-modal>
+
     <form
         #form
         class="mainForm form-group"
         #addForm="ngForm"
-        (ngSubmit)="onSubmit(addForm)"
+        (ngSubmit)="onSubmit(addForm);modal.close()"
     >
         <label
             class="mt-2"
@@ -119,7 +117,7 @@
         >
             <!-- default value -->
             <option
-                value=""
+                value
                 disabled
                 selected
             >
@@ -177,7 +175,7 @@
             class="btn btn-secondary me-3"
             type="button"
             value="Cancel"
-            (click)="closeForm()"
+            (click)="modal.close();closeForm()"
         >
         <input
             class="btn btn-primary"
@@ -189,8 +187,8 @@
             class="closeBtn"
             type="button"
             value="&#10005;"
-            (click)="closeForm()"
+            (click)="modal.close();closeForm()"
         >
     </form>
 
-</div>
+</ng-template>

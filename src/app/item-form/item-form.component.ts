@@ -1,8 +1,8 @@
-import { Component, ViewChild, ElementRef, Inject } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { CATEGORY_SELECT } from '../CategorySelect';
 import { MenuService } from '../menu.service';
 import { BlurViewService } from '../blur-view.service';
-import { DOCUMENT } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'item-form',
@@ -14,23 +14,24 @@ export class ItemFormComponent {
   // Properties
   // loop over for select drop-down menu
   categorySelect = CATEGORY_SELECT;
-
+  // toggle blur class on 'add new' btn
   formActive: boolean = false;
 
   constructor(
     private menuService: MenuService,
     private blurUI: BlurViewService,
-    @Inject(DOCUMENT) private document: Document
+    public modalService: NgbModal
   ) {}
   // Methods
-  openForm() {
-    this.formActive = true;
+  openForm(content: any) {
     this.blurUI.setState('addform');
+    this.modalService.open(content, {backdrop: 'static', keyboard: false})
+    this.formActive = true;
   }
 
   closeForm() {
-    this.formActive = false;
     this.blurUI.setState(null);
+    this.formActive = false;
   }
 
   onSubmit(data: any) {
@@ -41,7 +42,8 @@ export class ItemFormComponent {
 
     // reset form back to default
     data.reset();
-    this.formActive = false;
     this.blurUI.setState(null);
+    this.formActive = false;
+
   }
 }
