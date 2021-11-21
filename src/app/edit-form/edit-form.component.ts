@@ -1,7 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { Item } from '../Item';
 import { CATEGORY_SELECT } from '../CategorySelect';
-import { Category } from '../Category';
 import { MenuService } from '../menu.service';
 import { BlurViewService } from '../blur-view.service';
 import { Observable } from 'rxjs';
@@ -28,7 +29,8 @@ export class EditFormComponent implements OnInit{
 
   constructor(
     private menuService: MenuService,
-    private blurUIservice: BlurViewService
+    private blurUIservice: BlurViewService,
+    public modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -64,10 +66,11 @@ export class EditFormComponent implements OnInit{
     this.formActive = false;
     this.blurUIservice.setState(null)
   }
-  openEditForm(item: Item) {
-    this.formActive = true;
-    this.blurUIservice.setState('editform')
+  openEditForm(item: Item, content: any) {
     this.editItem = item;
+    this.formActive = true;
+    this.blurUIservice.setState('editform');
+    this.modalService.open(content, {backdrop: 'static', keyboard: false});
   }
 
   onChange(selection: string) {

@@ -1,11 +1,8 @@
-<div
-    *ngIf="formActive"
-    class="overlay"
->
+<ng-template #modal let-modal>
     <form
         class="editForm form-group"
         #editForm="ngForm"
-        (ngSubmit)="onSubmit(editForm)"
+        (ngSubmit)="onSubmit(editForm);modal.close()"
     >
         <h3>Edit {{editItem.name}}</h3>
         <label
@@ -145,7 +142,7 @@
             class="btn btn-secondary me-3"
             type="button"
             value="Cancel"
-            (click)="onCancel()"
+            (click)="onCancel();modal.close()"
         >
         <input
             class="btn btn-primary"
@@ -157,16 +154,16 @@
             class="closeBtn"
             type="button"
             value="&#10005;"
-            (click)="onCancel()"
+            (click)="onCancel();modal.close()"
         >
 
     </form>
-</div>
+</ng-template>
 
 <div class="menu-wrapper" [ngClass]="{'blur': formActive}">
     <item-card
         *ngFor="let item of (menu | async)"
         [item]="item"
-        (openForm)="openEditForm($event)"
+        (openForm)="openEditForm($event, modal)"
     ></item-card>
 </div>
