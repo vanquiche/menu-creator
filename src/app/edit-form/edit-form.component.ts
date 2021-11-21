@@ -49,14 +49,6 @@ export class EditFormComponent implements OnInit{
       },
       this.editItem.id
     );
-    console.log({
-      id: this.editItem.id,
-      category:
-        this.currentCategorySelection === undefined
-          ? this.editItem.category
-          : this.currentCategorySelection,
-      ...data.form.value,
-    });
 
     this.formActive = false;
     this.blurUIservice.setState(null);

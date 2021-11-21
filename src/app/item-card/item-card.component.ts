@@ -25,9 +25,5 @@ export class ItemCardComponent {
   handleCheck(item: any, status: string) {
     if (status === 'listed') this.menuService.updateListStatus(item);
     if (status === 'happyHour') this.menuService.updateHappyHourStatus(item);
-
-    console.log(item);
-
-
   }
 }

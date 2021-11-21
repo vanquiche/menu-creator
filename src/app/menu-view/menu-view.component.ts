@@ -107,7 +107,6 @@ export class MenuViewComponent implements OnInit {
     let data = this.userMenu.nativeElement;
 
     html2canvas(data, { scale: 2 }).then((canvas) => {
-      // console.log(canvas);
       const imgData = canvas.toDataURL('image/png');
       const h = data.offsetHeight;
       const w = data.offsetWidth;
